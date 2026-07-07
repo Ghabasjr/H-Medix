@@ -1,0 +1,232 @@
+CHAPTER THREE
+RESEARCH METHODOLOGY, SYSTEM ANLYSIS AND DESIGN
+3.0Introduction
+This chapter presents the methodology adopted for the design and implementation of the QR-based cashless transaction system for small-scale businesses using H-Medix Pharmacy and Supermarket, Abuja, as a case study. The methodology explains the various procedures, techniques, tools, and approaches used in carrying out the study and developing the proposed system.
+3.1Research Methodology
+Research methodology encompasses the various procedures, techniques, methods, and approaches employed in conducting a study. It provides a systematic framework that guides the researcher in achieving the objectives of the research. Methodology is broader than research methods because it includes the principles, strategies, and processes that govern the entire research and development activities. Therefore, research methodology serves as the foundation for planning, data collection, system analysis, design, implementation, testing, evaluation, and documentation of the proposed system.
+For this study, a combination of descriptive and developmental research methodologies was adopted to facilitate the design and implementation of the QR-Based Cashless Transaction System for Small-Scale Businesses using H-Medix Pharmacy and Supermarket, Abuja, as a case study. The descriptive methodology was used to examine and understand the existing payment processes, identify their limitations, and determine the requirements needed for an improved solution. The developmental methodology was employed because the study involved the development of a functional software application aimed at solving identified payment-related challenges.
+The system was developed using the Software Development Life Cycle (SDLC), specifically the Waterfall Model. The Waterfall Model is a structured and sequential software development approach widely used in information system development. It divides the development process into distinct phases, with each phase completed before proceeding to the next. The major phases include requirement analysis, system design, implementation, testing, deployment, and maintenance. This model was selected because it provides a clear development framework, facilitates proper documentation, and ensures systematic progression throughout the software development process.
+The adoption of the Waterfall Model enabled the researcher to analyze the existing payment system, identify operational problems, design the proposed QR-based solution, develop the software, conduct testing procedures, and evaluate the effectiveness of the system before deployment. This structured approach ensured that the developed system met user requirements and provided a secure, reliable, and efficient payment solution for small-scale businesses.
+3.2Research Design
+The descriptive and developmental research methods were adopted for this study. The descriptive method was used to explain the current payment processes used by small-scale businesses, identify the operational problems associated with existing systems, and describe the features of the proposed QR-based payment solution. This method helped the researcher understand the weaknesses of traditional payment methods such as cash transactions, POS operations, and manual transfer verification.
+The developmental research method was adopted because the study involves the design, development, implementation, and testing of a functional software system. The developmental approach provides a systematic framework for developing a solution that addresses identified problems within the existing payment environment. It also supports software planning, system modeling, database design, coding, testing, debugging, and deployment.
+The research design followed a systematic procedure consisting of problem formulation, research planning, data collection, data processing, system design, implementation, testing, evaluation, and documentation. This structured approach ensures that the developed system meets user requirements and performs effectively within the selected business environment.
+3.3Functional Requirements
+The functional requirements describe the specific operations and activities the proposed QR-based cashless transaction system must perform in order to achieve its objectives effectively. These requirements define the major services and features that users will interact with during system operation.
+The proposed system should be able to perform the following functions:
+User Registration and Login: The system should allow users such as administrators and merchants to register and securely log into the system using usernames and passwords.
+QR Code Generation: The system should generate unique QR payment codes containing transaction and payment details for customers.
+QR Code Scanning: Customers should be able to scan the generated QR code using mobile banking or payment applications.
+Payment Processing: The system should process customer payments instantly after QR code scanning and payment authorization.
+Transaction Verification: The system should automatically verify payment status before confirming successful transactions.
+Payment Confirmation: The system should display successful payment confirmation messages to both customers and merchants immediately after payment completion.
+Transaction Record Storage: The system should store all transaction records securely within the database for future reference and monitoring.
+Transaction History Management: The system should allow users to view previous transactions and payment history.
+User Management: The administrator should be able to manage users, update records, and monitor transaction activities.
+Report Generation: The system should generate transaction reports for business monitoring and financial tracking purposes.
+3.3.1Non-Functional Requirements
+Non-functional requirements describe the quality attributes, performance standards, and operational characteristics expected from the proposed system. These requirements ensure that the system performs efficiently, securely, and reliably under different operational conditions.
+The proposed system should satisfy the following non-functional requirements:
+Security: The system should provide secure authentication and protect user information and transaction data from unauthorized access.
+Reliability: The system should operate consistently without frequent failures or transaction errors.
+Scalability: The system should be capable of handling increasing numbers of users and transaction volumes as business operations expand.
+User Friendliness: The system interface should be simple, clear, and easy to navigate for both customers and merchants.
+Fast Processing Speed: The system should process transactions quickly in order to reduce customer waiting time and improve operational efficiency.
+Accuracy: The system should provide accurate transaction processing and maintain correct financial records without duplication or loss of data.
+Availability: The system should be accessible whenever users need to perform transactions or retrieve transaction information.
+Maintainability: The system should be easy to maintain, update, and improve whenever necessary.
+Compatibility: The system should function properly across different devices such as smartphones, tablets, and computer systems.
+Efficiency: The system should utilize system resources effectively while maintaining high transaction performance.
+3.4System Architecture
+System architecture refers to the structural design that explains how the different components of the QR-based cashless transaction system interact with one another to achieve efficient payment processing and transaction management. The proposed system adopts a three-tier architecture consisting of the presentation layer, application layer, and database layer. This structure was selected because it improves scalability, security, flexibility, and system maintenance.
+The presentation layer serves as the user interface where customers, merchants, and administrators interact with the system using smartphones, computers, or web browsers. Through this interface, users can generate QR codes, scan QR codes, make payments, verify transactions, and view transaction history. The interface is designed to be user-friendly and easy to navigate in order to improve customer experience and operational efficiency.
+The application layer handles the core business logic of the system. It processes payment requests, verifies transactions, authenticates users, generates QR codes, and communicates with the database layer. This layer acts as the bridge between the user interface and the database. It ensures that all transactions are validated before processing and recording them in the database.
+The database layer stores all system information such as user accounts, transaction records, QR code details, payment history, and system logs. MySQL database management system is used because it provides reliability, speed, and efficient data management capabilities. The system architecture therefore ensures secure and efficient communication among all system components.
+3.5Use Case Diagram
+The Use Case Diagram explains how different users interact with the QR-based cashless transaction system. The main actors in the system are the customer, merchant/cashier, administrator, and payment platform. Customers use the system to scan QR codes, make payments, and receive confirmations, while merchants generate QR codes, verify payments, and monitor transactions. The administrator manages users, transactions, and the database.
+The diagram helps in identifying the functional requirements of the system by showing the responsibilities of each actor and their interaction with the system. It also supports system planning, implementation, and testing by ensuring that all required functions are properly developed for effective system operation.
+Scan QR code Scan QR code
+Scan QR code
+Scan QR code
+PAYMENT SYSTEM (Bank/ Mobile BankingPAYMENT SYSTEM (Bank/ Mobile BankingCashier/Marchant  Cashier/Marchant  Administrator Administrator View transaction HistoryView transaction HistoryManage UserManage UserManage DatabaseManage DatabaseMonitor TransactionMonitor TransactionReceived Confirmation Received Confirmation Make PaymentMake PaymentLogin Login Generate QR CodeGenerate QR CodeVerify transactionVerify transactionCustomer Customer Figure 3.2: Use Case DiagramFigure 3.2: Use Case Diagram
+PAYMENT SYSTEM (Bank/ Mobile Banking
+PAYMENT SYSTEM (Bank/ Mobile Banking
+Cashier/Marchant
+Cashier/Marchant
+Administrator
+Administrator
+View transaction History
+View transaction History
+Manage User
+Manage User
+Manage Database
+Manage Database
+Monitor Transaction
+Monitor Transaction
+Received Confirmation
+Received Confirmation
+Make Payment
+Make Payment
+Login
+Login
+Generate QR Code
+Generate QR Code
+Verify transaction
+Verify transaction
+Customer
+Customer
+Figure 3.2: Use Case Diagram
+Figure 3.2: Use Case Diagram
+3.6Data Flow Diagram (DFD)
+The Data Flow Diagram (DFD) is a graphical representation that illustrates the movement of data within the QR-based cashless transaction system. It explains how data flows from one process to another and how users interact with the system during transaction processing. The DFD is important because it provides a clear understanding of how information is processed, stored, and transferred throughout the system.
+The Context Level DFD presents the entire system as a single process and shows the interaction between external entities such as customers and merchants with the payment system. Customers send payment requests to the system through QR scanning, while merchants receive payment confirmation and transaction updates.
+QR code RequestTransaction StatusQR code RequestTransaction StatusPayment RequestPayment ConfirmationPayment RequestPayment Confirmation
+QR code Request
+Transaction Status
+QR code Request
+Transaction Status
+Payment Request
+Payment Confirmation
+Payment Request
+Payment Confirmation
+MERCHANTMERCHANTCUSTOMERCUSTOMERQR PAYMENT SYSTEMQR PAYMENT SYSTEM
+MERCHANT
+MERCHANT
+CUSTOMER
+CUSTOMER
+QR PAYMENT SYSTEM
+QR PAYMENT SYSTEM
+Figure 3.3: Data Flow Diagram (DFD)
+The Level 1 DFD provides a more detailed explanation of the internal processes involved in the payment operation. These processes include QR code scanning, payment processing, transaction verification, transaction storage, and receipt generation. Each process interacts with the database to retrieve or store transaction information.
+Scan QR CodeProcess PaymentVerify TransactionTransaction DatabaseStore TransactionGenerate ReceiptScan QR CodeProcess PaymentVerify TransactionTransaction DatabaseStore TransactionGenerate Receipt
+Scan QR Code
+Process Payment
+Verify Transaction
+Transaction
+Database
+Store Transaction
+Generate Receipt
+Scan QR Code
+Process Payment
+Verify Transaction
+Transaction
+Database
+Store Transaction
+Generate Receipt
+Figure 3.4: Data Flow Diagram (Level 1 DFD)
+The DFD helps the researcher understand how data moves efficiently through the system and also identifies potential points of delay or error during transaction processing. It serves as an important design tool that supports system development, debugging, and maintenance. The use of DFD also improves documentation and communication among developers and system users because it simplifies complex processes into understandable graphical representations.
+3.7Entity Relationship Diagram (ERD)
+The Entity Relationship Diagram (ERD) describes the relationship between the major entities within the database structure of the QR payment system. It provides a visual representation of how data is stored, connected, and managed within the database environment.
+The major entities identified in the system include Users, Transactions, Payments, and QR Codes. The Users entity stores information about customers, merchants, and administrators. The Transactions entity stores payment transaction details such as transaction ID, amount, transaction date, and transaction status. The Payments entity contains payment method details and payment confirmation information, while the QR Codes entity stores generated QR code information linked to transactions.
+Relationships exist between these entities to ensure efficient data management. For example, a user can perform multiple transactions, while each transaction generates a corresponding QR code and payment record. These relationships help maintain data integrity and reduce redundancy within the database.
+The ERD plays an important role during database implementation because it provides the structural foundation for creating tables, relationships, and constraints in the database management system. It also supports database normalization and improves overall system performance.
+By properly organizing the database entities and their relationships, the proposed system achieves efficient storage, easy retrieval of records, and improved transaction management.
+Figure 3.5: Entity Relationship Diagram (ERD)
+3.8Requirement Gathering and Analysis
+System requirements are the minimum configurations needed for the successful development and operation of the QR-based cashless transaction system. These requirements ensure that the application runs efficiently, securely, and without operational problems. The requirements are grouped into hardware, software, and database requirements.
+3.8.1Computer Hardware Requirement
+The following hardware requirements are needed for the development and implementation of the proposed system:
+Microsoft® Windows® 7/8/10/11 (32-bit or 64-bit)
+Intel Core i3 processor or higher
+Minimum of 4 GB RAM
+Minimum of 500 GB storage capacity (SSD/HDD)
+1280 × 800 screen resolution
+Stable internet connection
+Android smartphone for QR code testing
+3.8.2Computer Software Requirement
+The following software requirements are needed for developing the proposed system:
+Visual Studio Code (VS Code)
+XAMPP Server
+PHP Programming Language
+HTML, CSS, and JavaScript
+Google Chrome or Mozilla Firefox Browser
+QR Code Generator Library/API
+3.8.3Database Software Requirement
+The following database requirements are needed for storing and managing transaction records within the system:
+MySQL Database Server
+phpMyAdmin
+XAMPP Control Panel
+These requirements ensure proper database management, secure transaction storage, and smooth system performance.
+3.9Method of Data Collection
+The method of data collection refers to the procedures and techniques used by a researcher to obtain relevant information required for the successful completion of a study. Data collection is an important aspect of research because it provides the necessary information for system analysis, design, development, and evaluation. For this study, both primary and secondary sources of data collection were employed to gather information about the existing payment processes and the requirements for the proposed QR-based cashless transaction system.
+Primary Source
+Primary data refers to original information collected directly from respondents or the study environment for the specific purpose of the research. In this study, primary data were obtained through personal interviews, direct observation, and discussions with the management and staff of H-Medix Pharmacy and Supermarket, Abuja. These methods enabled the researcher to gather firsthand information about the current payment processes, operational challenges, transaction procedures, and user requirements for the proposed system.
+Secondary Source
+Secondary data refers to information obtained from existing materials that have already been documented by other researchers, organizations, or institutions. The researcher obtained secondary data from textbooks, journals, conference papers, research reports, online publications, articles, and other relevant academic materials related to cashless payment systems, QR code technology, electronic transactions, and software development methodologies. These sources provided theoretical and practical insights that supported the study.
+3.9.1Interview Method
+The interview method is a systematic process of collecting information through direct interaction between the researcher and respondents. It allows the researcher to obtain detailed explanations, opinions, and experiences regarding the subject under investigation. For this study, interviews were conducted with the management and operational staff of H-Medix Pharmacy and Supermarket, Abuja.
+The interview sessions focused on understanding the existing transaction procedures, challenges associated with cash payments, POS transactions, and mobile bank transfers, as well as expectations for an improved payment system. Information obtained from the interviews assisted the researcher in identifying system requirements, operational weaknesses, and user expectations that guided the design and development of the proposed QR-based cashless transaction system.
+3.9.2Observation Method
+Observation involves the direct examination of activities, processes, and events within the study environment. This method enabled the researcher to observe how payment transactions were processed within the business environment. Through observation, the researcher identified issues such as delayed transaction confirmations, manual verification of transfers, customer waiting time, network-related challenges, and record management practices.
+The information gathered through observation complemented data obtained from interviews and provided a clearer understanding of the operational challenges affecting payment processing. The findings from the observation exercise contributed significantly to the design of the proposed QR-based cashless transaction system by ensuring that the developed solution addressed real-life business needs and operational requirements.
+3.10Analysis of the Existing System
+The existing payment system used by many small-scale businesses mainly involves cash transactions, POS transactions, and mobile bank transfers. Although these payment methods support electronic transactions to some extent, they still experience several operational challenges that reduce efficiency and reliability.
+Cash transactions require physical handling of money, which increases the risk of theft, loss, and counting errors. They also make financial record management difficult because transaction records are mostly handled manually. POS systems provide electronic payment services but depend heavily on stable internet connectivity and banking networks. Frequent network failures often lead to unsuccessful or delayed transactions, causing frustration for both customers and business owners.
+Mobile bank transfers have also become widely used due to the growth of mobile banking applications. However, this method requires manual verification of payment alerts before goods or services are released. Delayed transaction notifications and fake transfer alerts create operational risks and increase transaction processing time.
+The existing system also creates long customer queues during busy periods because payment confirmation sometimes takes several minutes. High POS maintenance costs and transaction charges further increase operational expenses for small businesses. These challenges highlight the need for a simpler, faster, and more reliable digital payment solution such as QR-based payment technology.
+3.10.1 Problems Identified in the Existing System
+S/N
+Problems Identified
+1
+Frequent POS network failure
+2
+Delayed transfer alerts
+3
+Manual payment verification
+4
+Long customer queues
+5
+High POS maintenance cost
+6
+Poor transaction tracking
+7
+Risk of fake payment alerts
+8
+Poor transaction reliability
+The identified problems significantly affect the efficiency of payment processing within small-scale retail environments. Frequent network failures and delayed transaction confirmations reduce customer confidence and slow down business operations. Manual verification of transfers consumes time and increases the possibility of human error. The risk of fraudulent alerts also creates financial insecurity for merchants.
+Furthermore, poor transaction tracking makes it difficult for businesses to maintain accurate financial records and monitor daily sales activities. High POS service charges reduce profitability, especially for businesses operating on small profit margins. These operational limitations therefore justify the need for an improved payment system capable of providing faster, safer, and more reliable transaction processing.
+3.11Analysis of the Proposed System
+The proposed system is a QR-based cashless transaction system developed to improve payment processing and transaction management within small-scale businesses. The system is designed to eliminate many of the operational problems associated with existing payment methods by introducing faster and more reliable digital transaction processing.
+The proposed system allows merchants to generate QR payment codes that customers can scan using their mobile banking applications. Once scanned, the payment is processed instantly, and transaction confirmation is automatically sent to both the customer and the merchant. This reduces the need for manual verification and minimizes transaction delays.
+The system also maintains digital transaction records within a database, making it easier for business owners to monitor sales activities and generate financial reports. The QR-based system reduces dependence on expensive POS devices and lowers operational costs for small businesses.
+In addition, the proposed system improves transaction security through user authentication and automatic payment verification. Since payment details are embedded within QR codes, the possibility of manual entry errors is reduced significantly. The system therefore provides a simple, affordable, secure, and efficient digital payment solution suitable for small-scale retail businesses.
+References
+Abor, J., & Quartey, P. (2023). Digital financial services and SME performance in sub-Saharan Africa. Journal of African Business, 24(2), 210–228. https://doi.org/10.1080/15228916.2022.2107895
+Adeoti, O. O., & Oshotimehin, K. O. (2012). Adoption of point of sale terminals in Nigeria: Assessment of consumers’ level of satisfaction. Research Journal of Finance and Accounting, 3(1), 1–5. https://www.iiste.org/Journals/index.php/RJFA/article/view/1196
+Adewoye, J. O. (2013). Impact of mobile banking on service delivery in the Nigerian banking industry. International Review of Management and Business Research, 2(2), 333–344. http://www.irmbrjournal.com
+Akinwale, Y. O., & Kyari, A. K. (2024). Electronic payment adoption and operational efficiency among small retail businesses in Nigeria. International Journal of Financial Studies, 12(1), 45–60. https://doi.org/10.3390/ijfs12010045
+Al-Saedi, K., Al-Emran, M., Ramayah, T., & Abusham, E. (2022). Mobile payment adoption: Extending UTAUT model. Technology in Society, 68, 101–110. https://doi.org/10.1016/j.techsoc.2021.101901
+Alalwan, A. A., Dwivedi, Y. K., Rana, N. P., & Williams, M. D. (2022). Consumer adoption of digital payment systems in developing countries. Information Systems Frontiers, 24(3), 879–897. https://doi.org/10.1007/s10796-020-10032-w
+Arango, C., Huynh, K. P., & Sabetti, L. (2020). Consumer payment choice: Merchant card acceptance versus pricing incentives. Journal of Banking & Finance, 55, 130–141. https://doi.org/10.1016/j.jbankfin.2015.03.003
+Auer, R., Cornelli, G., & Frost, J. (2020). Covid-19, cash, and the future of payments. BIS Bulletin, 3, 1–6. https://www.bis.org/publ/bisbull03.pdf
+Boateng, H., Adam, D. R., & Okoe, A. F. (2023). Consumer attitudes toward cashless payments in emerging economies. Journal of Retailing and Consumer Services, 70, 103118. https://doi.org/10.1016/j.jretconser.2022.103118
+Central Bank of Nigeria. (2023). Annual report and statement of accounts 2023. https://www.cbn.gov.ng
+Chen, H. (2019). The impact of mobile payment on retail operations and customer experience. Journal of Retailing and Consumer Services, 48, 1–8. https://doi.org/10.1016/j.jretconser.2019.01.002
+Chong, A. Y. L., Lim, E. T. K., & Ling, H. (2022). FinTech adoption among SMEs: An empirical study. Industrial Management & Data Systems, 122(4), 950–968. https://doi.org/10.1108/IMDS-05-2021-0280
+Dahlberg, T., Guo, J., & Ondrus, J. (2015). A critical review of mobile payment research. Electronic Commerce Research and Applications, 14(5), 265–284. https://doi.org/10.1016/j.elerap.2015.07.006
+Donner, J., & Tellez, C. A. (2008). Mobile banking and economic development. Asian Journal of Communication, 18(4), 318–332. https://doi.org/10.1080/01292980802344190
+Donou-Adonsou, F., & Sylwester, K. (2016). Mobile banking and economic development. Applied Economics Letters, 23(7), 473–476. https://doi.org/10.1080/13504851.2015.1071462
+Ezeh, P. C., & Ndukwe, C. C. (2024). Consumer adoption of electronic payment systems after cash scarcity in Nigeria. African Journal of Economic and Management Studies, 15(1), 77–92. https://doi.org/10.1108/AJEMS-05-2023-0201
+Gomber, P., Koch, J. A., & Siering, M. (2017). Digital finance and FinTech. Journal of Business Economics, 87(5), 537–580. https://doi.org/10.1007/s11573-017-0852-x
+Hasan, I., De Renzis, T., & Schmiedel, H. (2013). Retail payments and economic growth. Bank of Finland Discussion Paper No. 19. https://www.suomenpankki.fi
+Jack, W., & Suri, T. (2014). Risk sharing and mobile money. American Economic Review, 104(1), 183–223. https://doi.org/10.1257/aer.104.1.183
+Kauffman, R. J., & Riggins, F. J. (2012). ICT and microfinance sustainability. Electronic Commerce Research and Applications, 11(5), 450–468. https://doi.org/10.1016/j.elerap.2012.03.001
+Kieseberg, P., Schrittwieser, S., Mulazzani, M., Huber, M., Weippl, E., & Holzinger, A. (2010). QR code security. https://doi.org/10.1109/ARES.2010.33
+Kumar, A., & Gupta, S. (2023). Determinants of cashless payment adoption. Journal of Financial Services Marketing, 28(2), 150–165. https://doi.org/10.1057/s41264-022-00174-5
+Law, R., & So, S. (2010). QR codes in tourism marketing. Journal of Travel & Tourism Marketing, 27(6), 633–644. https://doi.org/10.1080/10548408.2010.508995
+Lee, I., & Shin, Y. J. (2018). FinTech ecosystem. Business Horizons, 61(1), 35–46. https://doi.org/10.1016/j.bushor.2017.09.003
+Li, Y., Wu, J., & Chen, H. (2023). QR code mobile payment adoption. Electronic Commerce Research, 23(1), 95–118. https://doi.org/10.1007/s10660-021-09480-y
+Liébana-Cabanillas, F., Marinković, V., & Kalinić, Z. (2017). Mobile payment acceptance. Telematics and Informatics, 34(1), 129–141. https://doi.org/10.1016/j.tele.2016.08.003
+Liébana-Cabanillas, F., Singh, N., Kalinic, Z., & Carvajal-Trujillo, E. (2020). Mobile payment adoption determinants. Industrial Management & Data Systems, 120(3), 621–638. https://doi.org/10.1108/IMDS-05-2019-0259
+Mensah, I. K., & Adams, S. (2022). Electronic payment systems in Ghana. Information Development, 38(4), 623–636. https://doi.org/10.1177/02666669211003068
+Nguyen, T. T., & Dang, T. K. (2022). Digital payment adoption among SMEs. Sustainability, 14(9), 5373. https://doi.org/10.3390/su14095373
+NIBSS. (2021). Nigeria Quick Response (NQR) framework. https://nibss-plc.com.ng
+Ozili, P. K. (2018). Digital finance and financial inclusion. Borsa Istanbul Review, 18(4), 329–340. https://doi.org/10.1016/j.bir.2017.12.003
+Ozili, P. K. (2022). Digital financial inclusion in Nigeria. Journal of Payments Strategy & Systems, 16(1), 1–14.
+Phan, T. T., & Ho, J. C. (2022). QR payment adoption among small retailers. Asia Pacific Journal of Marketing and Logistics, 34(8), 1700–1716. https://doi.org/10.1108/APJML-07-2021-0485
+Rahman, M. M., Islam, M. R., & Hossain, M. (2024). Effectiveness of QR payments. Journal of Retailing and Consumer Services, 75, 103542. https://doi.org/10.1016/j.jretconser.2023.103542
+Shankar, A., & Datta, B. (2022). Customer satisfaction with digital payment services. International Journal of Bank Marketing, 40(5), 1025–1043. https://doi.org/10.1108/IJBM-07-2021-0314
+Slade, E., Williams, M., & Dwivedi, Y. K. (2015). UTAUT2 and mobile payments. Information Systems Frontiers, 17(6), 1437–1452. https://doi.org/10.1007/s10796-014-9524-3
+Soon, T. J. (2008). QR code. Synthesis Journal, 2008, 59–78.
+World Bank. (2022). Global Findex Database 2021. https://www.worldbank.org/globalfindex
+Zandi, M., Singh, V., & Irving, J. (2016). The impact of electronic payments on economic growth. https://www.moodysanalytics.com

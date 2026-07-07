@@ -1,0 +1,485 @@
+CASHLESS TRANSACTION SYSTEM USING QR PAYMENT FOR SMALL SCALE BUSINESS (A CASE STUDY OF H-MEDIX PHARMACY AND SUPERMARKET, ABUJA).
+BY
+OLADOSUN VALENTINE OCHUKO
+0143
+SOFTWARE AND WEB DEVELOPMENT
+Mr ADIO SABO ODAH
+FEBRAURY, 2026
+CHAPTER ONE
+1.0Introduction
+The rapid advancement in information and communication technology has significantly transformed the way financial transactions are conducted across the world. Traditional cash-based payment systems are gradually being replaced by electronic and digital payment solutions that provide faster, safer, and more efficient methods of exchanging value. The integration of computing technologies, mobile devices, and internet-based platforms has led to the development of automated financial systems that support real-time transactions and digital record management.
+In modern business environments, particularly in retail and service sectors, the need for efficient transaction processing is critical to ensuring customer satisfaction and operational effectiveness. Manual cash handling is associated with several limitations, including counting errors, theft risks, poor record keeping, and time-consuming reconciliation processes. These challenges have created a growing demand for computerized cashless transaction systems that can improve accuracy, speed, and accountability.
+A cashless transaction system involves the design and implementation of software solutions that facilitate secure electronic payments, process transaction data, and maintain digital records for business operations. Such systems typically integrate technologies such as databases, web or mobile applications, secure authentication mechanisms, and automated transaction processing algorithms. The development of these systems falls within the domain of financial technology (FinTech), which combines computing, networking, and information systems to improve financial service delivery.
+One of the emerging technologies in this area is Quick Response (QR) code technology, which enables contactless payment through machine-readable codes scanned using mobile devices. QR-based systems eliminate the need for expensive hardware such as traditional Point of Sale (POS) terminals and provide a low-cost alternative for small-scale businesses. By embedding payment information within a scannable code, the system allows instant transaction processing and automatic data storage.
+In Nigeria, the push toward a cashless economy, supported by the Central Bank of Nigeria (CBN), has increased the adoption of digital payment solutions. However, many small-scale businesses still face operational challenges such as high POS costs, network failures, delayed transfer confirmations, and manual payment verification. These issues highlight the need for a simple, reliable, and cost-effective digital payment system that can be easily deployed in small business environments.
+1.1Background to the Study
+A cashless transaction system refers to any financial exchange conducted without the use of physical cash, relying instead on electronic platforms such as mobile banking, card payments, online transfers, and Quick Response (QR) code payments. This transition has improved the efficiency, transparency, and security of financial transactions while reducing the risks and operational challenges associated with handling physical cash. For small-scale businesses, particularly in the retail and healthcare sectors, adopting cashless payment methods has become essential for improving service delivery and maintaining competitiveness in a digital economy (Fathima & Bharathi, 2024).
+In Nigeria, the move toward a cashless economy has been strongly supported by the Central Bank of Nigeria (CBN) through various policies aimed at reducing the volume of physical cash in circulation and encouraging electronic payment channels. Between 2022 and 2025, the adoption of digital payments increased significantly due to factors such as the expansion of fintech services, the introduction of standardized QR payment frameworks, and the cash scarcity experienced during the 2023 naira redesign. According to Nwankwo and Okeke (2023), the cash shortage period accelerated the adoption of mobile transfers, POS services, and QR-based payments among individuals and small business owners who previously relied heavily on cash transactions.
+Among the various digital payment options, QR payment systems have emerged as one of the most cost-effective and convenient solutions for small-scale businesses. QR payment allows customers to scan a unique code using their mobile banking or payment application to complete a transaction instantly. Unlike traditional POS machines that require expensive hardware, maintenance, and service charges, QR systems require minimal setup and can be easily integrated into existing business operations. Studies conducted between 2022 and 2024 show that QR payments are particularly suitable for small businesses because they reduce operational costs, eliminate cash handling errors, and improve transaction speed (Singh & Rana, 2022).
+The retail industry has experienced significant transformation as consumer preferences continue to shift toward faster, safer, and contactless payment methods. The COVID-19 pandemic created a long-term behavioral change that increased the demand for contactless transactions to minimize physical contact and improve hygiene. Even after the pandemic period, customers continue to prefer digital and contactless payment options due to their convenience and efficiency. According to Adeyemi and Yusuf (2024), small retail businesses that adopted digital payment systems recorded improved customer satisfaction, reduced transaction time, and better financial record management.
+QR-based cashless systems enhance business transparency and accountability. Digital payment platforms automatically generate transaction records that can be used for financial tracking, auditing, and business analysis. This feature is particularly important for small-scale enterprises that often struggle with poor record keeping and financial management. Oladele and Akinola (2022) observed that digital transaction systems help business owners monitor daily sales, reduce revenue leakage, and support better decision-making for business growth.
+Despite these benefits, the adoption of QR payment systems among small-scale businesses still faces several challenges. Poor internet connectivity, unstable power supply, limited digital literacy, and concerns about cyber fraud continue to affect the effective use of digital payment technologies in developing countries. According to Ibrahim and Bello (2023), some small business owners remain hesitant to fully adopt QR payments due to fears of transaction failures, delayed confirmations, and lack of trust in digital platforms. Customer-related factors such as low awareness and preference for cash also contribute to the slow adoption of cashless systems in some areas.
+The Nigeria Inter-Bank Settlement System (NIBSS) introduced the Nigeria Quick Response (NQR) payment standard to enable interoperability across banks and financial service providers. This innovation allows customers to make payments using any banking application, thereby improving accessibility and encouraging wider acceptance of QR payments among merchants and consumers. According to Eze and Mohammed (2024), standardized QR payment systems have the potential to significantly enhance financial inclusion by providing low-cost digital payment solutions for small and informal businesses.
+Pharmacies and supermarkets represent critical sectors within the small-scale retail industry where fast, accurate, and secure transactions are essential. These businesses handle a high volume of daily customer transactions, making efficient payment systems necessary for effective service delivery. The integration of QR-based cashless transactions in such establishments can reduce long queues, minimize cash handling risks, and improve operational efficiency. However, the level of effectiveness, user acceptance, and operational challenges associated with QR payment systems may vary depending on business size, management capacity, and customer behavior. H-Medix Pharmacy and Supermarket in Abuja operates within a busy urban environment where customers expect fast and convenient service. With the increasing preference for digital transactions and the growing adoption of mobile banking applications, the implementation of a QR-based cashless payment system becomes highly relevant for improving business operations. Evaluating the use of QR payment in this establishment will provide practical insight into how the system affects transaction efficiency, financial management, and customer satisfaction. This study is therefore timely and relevant as it seeks to examine the effectiveness of a cashless transaction system using QR payment for small-scale businesses. 
+1.2Statement of the Problem
+The transition from cash-based transactions to digital payment systems has been widely promoted in Nigeria between 2022 and 2025 through the increased use of cards, POS, mobile transfers, and other electronic payment channels. Despite this progress, small-scale businesses continue to face several operational challenges associated with existing payment methods, particularly card-based and conventional electronic transactions.
+One major problem is the frequent failure and delay of card transactions due to poor network connectivity, system downtime, and interbank communication errors. Customers often experience declined or incomplete transactions, and in some cases, accounts are debited without immediate confirmation to the merchant. This situation leads to customer dissatisfaction, disputes, long queues, and loss of sales, especially in busy retail environments such as pharmacies and supermarkets.
+The high cost of POS devices, including acquisition, maintenance, and service charges, also increases operational expenses and reduces the profit margin of small businesses. In addition, security concerns such as card fraud, unauthorized deductions, and cyber threats have reduced customer confidence in electronic payments.
+Network instability and poor internet service further affect transaction reliability, while mobile transfers require manual verification, which is time-consuming and prone to errors or fraudulent claims. The 2023 cash scarcity also exposed weaknesses such as system congestion and delayed transaction alerts. These challenges shows the need for a faster, low-cost, and reliable alternative. QR payment technology offers instant confirmation, minimal infrastructure cost, and automatic record keeping. However, its effectiveness among small-scale businesses in Abuja remains uncertain. Therefore, this study seeks to develop and evaluate a QR-based cashless transaction system for H-Medix Pharmacy and Supermarket to improve transaction efficiency and customer service.
+1.3Objectives of the Study
+The aim of this study is to design and implement a QR-based cashless transaction system for small-scale businesses.
+The specific objectives of the study are to:
+To design a framework for a QR-based payment system suitable for small-scale retail businesses.
+To develop an algorithm for generating and processing QR payment transactions.
+To implement the algorithm in the development of the QR cashless transaction system.
+1.4Significance of the Study
+This study is significant because it contributes to both academic research and practical solutions in the area of digital payment systems for small-scale businesses. By introducing a QR-based cashless transaction system, the study addresses major challenges associated with card payments, POS transactions, and manual transfer verification, while providing a low-cost and efficient alternative suitable for small business environments.
+The study adds to the growing body of knowledge in financial technology (FinTech) and electronic payment systems by presenting QR payment as a practical and scalable solution for small-scale enterprises. While many existing studies focus on card-based and POS payment systems, this research highlights the affordability, simplicity, and operational efficiency of QR technology, thereby providing a useful reference for future studies on low-cost digital payment solutions in developing economies.
+The development of the proposed system demonstrates the practical application of QR technology in solving real business problems. The system enables instant payment confirmation, automatic transaction recording, and improved financial tracking. This integration shows how simple digital tools can enhance transaction speed, reduce errors, and improve accountability without the high operational costs associated with traditional POS infrastructure.
+For small-scale businesses such as pharmacies and supermarkets, the system offers a reliable and efficient method of handling customer payments. It reduces the risks associated with cash handling, minimizes transaction delays, and improves customer service delivery. These improvements are expected to enhance business efficiency, reduce operational stress, and support better financial management.
+The study also has economic and social relevance, as it supports the national cashless policy and promotes financial inclusion. By providing an accessible digital payment option, the system encourages both businesses and customers to adopt secure and convenient electronic transactions. In the long run, this will contribute to the growth of small businesses and strengthen the digital payment ecosystem.
+1.5Scope of the Study
+This study focuses on the design and implementation of a QR-based cashless transaction system for small-scale businesses, using H-Medix Pharmacy and Supermarket, Abuja, as a case study. The system is designed to facilitate customer payments through QR code scanning, provide instant transaction confirmation, and maintain automated digital records of all transactions. The research covers the system framework design, algorithm development, system implementation, and evaluation of its operational effectiveness within the business environment. The study examines how the system improves transaction speed, reliability, and record management compared to conventional payment methods such as card transactions and manual transfer verification.
+However, the study is limited to QR-based payment operations within the selected business and does not cover large-scale banking infrastructure, advanced financial security architecture, or nationwide payment system integration.
+1.6Definition of Key Terms
+Cashless Transaction System: A system that enables financial transactions to be conducted electronically without the use of physical cash. It utilizes digital channels such as mobile banking, cards, bank transfers, or QR codes for payments. The system improves transaction speed, security, transparency, and financial record management.
+QR (Quick Response) Code: A two-dimensional barcode that stores data in a machine-readable format. It can be scanned using a smartphone or dedicated scanner to retrieve embedded information quickly. QR codes are widely used for identification, information access, and digital payment processing.
+QR-Based Payment: A digital payment method where customers scan a merchant’s QR code to initiate a transaction. The payment is processed through a mobile banking or digital wallet application. This method supports instant confirmation and reduces the need for physical cash or POS devices.
+Electronic Payment (E-Payment): The transfer of money through electronic systems without physical cash exchange. It includes payment channels such as online banking, mobile banking, POS, and digital wallets. E-payment systems enhance convenience, efficiency, and transaction traceability.
+Point of Sale (POS): An electronic device used to process debit or credit card payments at business locations. It connects to banking networks to authorize and complete transactions instantly. POS systems also help record sales and manage daily business transactions.
+Mobile Banking: A banking service that allows customers to perform financial transactions using a mobile device. Users can transfer funds, pay bills, and check account details through a mobile application.
+FinTech (Financial Technology): The application of digital technology to improve and automate financial services. It includes innovations such as mobile payments, digital wallets, and online banking systems. FinTech enhances financial inclusion, efficiency, and accessibility of financial services.
+Small-Scale Business: A business enterprise that operates with limited capital and a small workforce. It typically serves a local market and handles a moderate volume of daily transactions.
+Such businesses require simple, affordable, and efficient payment solutions.
+Nigeria Quick Response (NQR): A standardized QR payment framework developed by the Nigeria Inter-Bank Settlement System (NIBSS). It allows customers to make payments using any mobile banking application across different banks.
+Transaction: The process of exchanging value between a customer and a business for goods or services. In digital systems, it involves payment initiation, authorization, processing, and confirmation. Transactions are recorded electronically for monitoring and financial management.
+Digital Record Keeping: The storage of transaction data in electronic format within a database or system. It allows easy retrieval, tracking, and analysis of financial activities. Digital records improve accuracy, accountability, and business decision-making.
+CHAPTER TWO
+Literature Review
+2.0Introduction
+This chapter reviews literature relevant to the study to provide a clear understanding of the concepts, technologies, and systems related to cashless transactions using QR payment. The review examines theoretical background and related studies in order to identify existing knowledge, challenges, and gaps that justify the need for this research. In this study, the researcher focuses on key concepts such as cashless payment systems, QR code technology, digital payment platforms, and their application in small-scale business operations.
+2.1Conceptual Framework
+2.1.1Cashless Payment System
+A cashless payment system refers to financial transactions conducted without the use of physical currency, where payments are made electronically through digital platforms such as bank cards, mobile banking applications, electronic transfers, and QR code systems. The concept of a cashless economy has gained global attention due to its potential to improve financial efficiency, transparency, and security while reducing the costs and risks associated with handling physical cash (Ozili, 2018).
+The transition toward cashless transactions has been driven largely by advancements in financial technology (FinTech), increased internet penetration, and the widespread use of smartphones. According to Arango, Huynh, and Sabetti (2020), digital payment systems enhance transaction speed and convenience, allowing individuals and businesses to complete payments instantly without the need for physical interaction. These systems also reduce operational inefficiencies associated with cash handling, including counting errors, theft, transportation costs, and the risk of counterfeit currency.
+One of the key benefits of a cashless payment system is improved financial transparency and accountability. Electronic transactions automatically generate digital records that can be used for monitoring, auditing, and financial planning. As noted by Hasan, De Renzis, and Schmiedel (2013), digital payment systems help reduce informal financial activities and support better financial regulation by creating traceable transaction histories. For businesses, especially small-scale enterprises, this improves financial management by providing accurate sales records and reducing revenue leakage.
+Figure 2.1: Cashless payment Channel
+The adoption of cashless payment systems has also been linked to broader economic development. Digital payments improve financial inclusion by enabling individuals without access to traditional banking infrastructure to participate in formal financial systems through mobile banking and electronic wallets (World Bank, 2022). In developing countries, mobile-based payment solutions have played a critical role in expanding access to financial services for underserved populations.
+In Nigeria, the Central Bank of Nigeria (CBN) introduced the cashless policy to reduce the volume of physical cash in circulation and promote electronic payment channels. The policy aims to improve the efficiency of the payment system, reduce the cost of cash management, and enhance economic transparency (Central Bank of Nigeria, 2023). Recent developments between 2022 and 2025, including the expansion of fintech services and the cash scarcity experienced during the 2023 naira redesign, significantly accelerated the adoption of digital payments among individuals and businesses (Nwankwo & Okeke, 2023).
+The COVID-19 pandemic further reinforced the global shift toward cashless transactions by increasing the demand for contactless payment methods. According to Auer, Cornelli, and Frost (2020), concerns about physical contact and hygiene encouraged consumers and businesses to adopt digital payment solutions, leading to long-term behavioral changes in payment preferences. Even after the pandemic, customers continue to prefer faster and more convenient electronic payment methods.
+Despite these benefits, several challenges affect the implementation of cashless payment systems. Network instability, cybersecurity threats, low digital literacy, and lack of trust in electronic platforms remain major concerns, particularly in developing economies (Ozili, 2018). Infrastructure limitations such as unreliable internet connectivity and unstable power supply also affect the reliability of digital payment systems. For small-scale businesses, the transition to cashless systems offers significant operational advantages but also presents adaptation challenges. While digital payments improve efficiency and customer experience, business owners must invest in basic infrastructure and acquire the necessary technical knowledge to manage electronic transactions effectively.
+2.1.2Electronic Payment Channels (Cards, POS, Mobile Transfers)
+Electronic payment channels are the operational platforms through which cashless transactions are conducted. The most commonly used channels include debit and credit cards, Point of Sale (POS) terminals, and mobile bank transfers. These channels form the foundation of modern digital payment systems and play a critical role in facilitating financial transactions for individuals and businesses.
+Card-based payments are among the earliest and most widely used electronic payment methods. Debit and credit cards allow customers to make payments directly from their bank accounts or through credit facilities. According to Humphrey, Willesson, Bergendahl, and Lindblom (2006), card payments improve transaction efficiency by reducing processing time and eliminating the need for physical cash. For businesses, card payments reduce the risks associated with cash handling and improve transaction accuracy.
+Point of Sale (POS) systems serve as the interface between cardholders and merchants. POS terminals process card payments by connecting to banking networks for transaction authorization and confirmation. Studies have shown that POS systems enhance retail efficiency by enabling real-time payment processing and automatic record generation (Hasan et al., 2013). In Nigeria, POS terminals have become widely used in retail stores, pharmacies, supermarkets, and service outlets.
+However, POS systems also present several operational challenges for small-scale businesses. The acquisition and maintenance costs of POS devices, transaction service charges, and dependence on stable network connectivity may affect business profitability. According to Adeoti and Oshotimehin (2012), small business owners often express concerns about high transaction fees and frequent network failures associated with POS operations.
+Another major limitation of card and POS transactions is the high rate of transaction failure due to network instability or system downtime. Failed or delayed transactions can lead to customer dissatisfaction, disputes, and loss of sales, especially in high-traffic retail environments. These operational challenges have prompted the search for alternative digital payment solutions that are more reliable and cost-effective.
+Mobile bank transfers represent another widely used electronic payment channel, particularly in developing countries. Mobile transfers allow customers to send money directly from their bank accounts using mobile banking applications or USSD services. According to Donou-Adonsou and Sylwester (2016), mobile-based financial services improve accessibility and convenience, particularly for individuals and small businesses.
+For merchants, mobile transfers provide a low-cost alternative to POS systems since they do not require specialized hardware. However, this payment method also has limitations. Business owners often need to manually verify payment alerts before releasing goods or services, which can be time-consuming and prone to errors. Delayed transaction notifications and fraudulent transfer claims are additional concerns reported in retail environments.
+The increasing adoption of electronic payment channels has significantly transformed retail operations. Customers now expect fast, convenient, and secure payment options, and businesses must adapt to these expectations to remain competitive. According to World Bank (2022), the growth of digital payment channels has contributed to improved transaction efficiency and reduced reliance on cash in many developing economies.
+Despite their widespread use, traditional electronic payment channels such as cards, POS, and mobile transfers still face infrastructure and operational challenges. Network congestion, cybersecurity risks, transaction delays, and service charges continue to affect their reliability, particularly for small-scale businesses with limited resources.
+2.1.3QR Code Technology
+Quick Response (QR) code technology is a two-dimensional (2D) barcode system that stores information in a machine-readable format and allows fast data retrieval using a smartphone camera or a dedicated scanning device. Originally developed by Denso Wave in Japan for tracking automotive components, QR codes have evolved into a widely used technology across sectors such as retail, healthcare, logistics, transportation, and financial services (Soon, 2008).
+Figure 2.2: Merchant-generated QR codes at checkout
+Figure 2.3: Real smartphone scanning process
+A QR code consists of black square modules arranged on a white background, capable of storing significantly more data than traditional one-dimensional barcodes. According to Law and So (2010), QR codes are designed to provide rapid decoding, high storage capacity, and error correction capabilities, which allow the code to remain readable even when partially damaged. These features make QR technology highly reliable for real-time information processing and digital transactions.
+In financial services, QR codes are increasingly used to facilitate cashless payments. A QR payment system allows merchants to generate a unique code that contains payment details such as account information, merchant identification, and transaction amount. Customers scan the code using a mobile banking or digital wallet application and authorize the payment instantly. This process eliminates the need for card swiping, manual account entry, or physical cash exchange (Dahlberg, Guo, & Ondrus, 2015).
+One of the major advantages of QR code payment technology is its low implementation cost. Unlike traditional POS systems that require specialized hardware and maintenance, QR payments only require a printed or digital code and a smartphone. According to Liébana-Cabanillas, Marinković, and Kalinić (2017), this affordability makes QR technology particularly suitable for small and medium-sized enterprises (SMEs) that may not have the financial capacity to invest in expensive payment infrastructure.
+QR code technology also improves transaction efficiency and accuracy. Since payment information is embedded within the code, the risk of human error associated with manual data entry is significantly reduced. In addition, QR-based systems provide instant transaction confirmation, which enhances operational efficiency in high-volume retail environments (Chen, 2019).
+Security is another important feature of QR payment systems. Modern QR payment platforms incorporate encryption, authentication, and tokenization to protect users from unauthorized transactions and data breaches. However, researchers have also identified potential risks such as QR code tampering and phishing attacks, which require proper system design and user awareness to mitigate (Kieseberg et al., 2010).
+The COVID-19 pandemic further accelerated the adoption of QR technology as businesses and consumers sought contactless payment methods. According to Auer et al. (2020), contactless technologies such as QR payments became widely accepted due to their ability to minimize physical interaction while maintaining transaction convenience.
+Globally, QR payment systems have been successfully implemented in countries such as China, India, and several Southeast Asian nations, where they serve as a primary payment method for small retailers and service providers. The introduction of standardized QR frameworks, such as interoperable national QR systems, has further improved adoption by allowing payments across different banks and financial platforms (World Bank, 2022).
+2.1.4Digital Payment Platforms and FinTech
+Digital payment platforms are software-based systems that enable electronic financial transactions between users, businesses, and financial institutions. These platforms form the backbone of modern cashless economies and are a major component of financial technology (FinTech), which refers to the use of innovative digital solutions to improve financial services (Gomber, Koch, & Siering, 2017).
+FinTech has transformed the traditional financial system by introducing faster, more accessible, and user-friendly payment solutions. Digital payment platforms include mobile banking applications, electronic wallets, online payment gateways, peer-to-peer transfer systems, and QR-based payment services. These platforms allow users to initiate, process, and confirm transactions in real time without visiting physical banking locations (Lee & Shin, 2018).
+The operation of digital payment platforms typically involves three stages: user authentication, transaction processing, and confirmation. During authentication, the system verifies the user’s identity through passwords, biometric verification, or multi-factor authentication. The processing stage involves communication between financial institutions through secure networks, while the confirmation stage generates digital records for both the customer and the merchant (Dahlberg et al., 2015).
+One of the major contributions of FinTech-based payment platforms is improved financial inclusion. According to the World Bank (2022), digital financial services enable individuals and small businesses to access formal financial systems even in areas where traditional banking infrastructure is limited. Mobile-based platforms, in particular, have expanded access to financial services for previously unbanked populations.
+For businesses, digital payment platforms provide several operational benefits. They automate transaction recording, improve financial transparency, and support better business decision-making. Liébana-Cabanillas et al. (2020) reported that digital payment adoption improves customer satisfaction by providing faster and more convenient payment options. In retail environments, this leads to shorter queues and improved service delivery.
+FinTech innovation has also encouraged the development of integrated payment ecosystems where multiple services such as transfers, bill payments, QR payments, and merchant services are available within a single platform. These integrated systems improve efficiency and reduce transaction costs for both customers and businesses (Gomber et al., 2017).
+Despite these advantages, digital payment platforms face several challenges. Cybersecurity threats, data privacy concerns, system downtime, and network congestion can affect service reliability. According to Lee and Shin (2018), trust and perceived security remain critical factors influencing user adoption of FinTech services.
+In developing countries, infrastructure limitations such as unstable internet connectivity and irregular power supply may also affect platform performance. Additionally, low digital literacy and resistance to technological change can slow the adoption of FinTech solutions among small business owners and customers.
+Recent developments between 2022 and 2025 have shown rapid growth in FinTech adoption in Nigeria and other emerging markets, driven by fintech startups, mobile banking expansion, and government policies supporting digital financial services. The introduction of interoperable payment frameworks and national QR standards has further strengthened the digital payment ecosystem.
+2.1.5Cashless Transactions in Small-Scale Businesses
+Small-scale businesses play a vital role in economic development by generating employment, supporting local supply chains, and contributing significantly to national income. However, many small enterprises traditionally rely heavily on cash transactions due to limited access to financial infrastructure and concerns about the cost and complexity of digital payment systems. The growing shift toward a cashless economy has introduced new opportunities for small-scale businesses to improve operational efficiency, financial management, and customer service through the adoption of electronic payment systems.
+Cashless transactions enable small businesses to receive payments electronically through channels such as mobile banking, POS terminals, electronic transfers, and QR-based payments. According to Zandi, Singh, and Irving (2016), the adoption of digital payment systems improves business efficiency by reducing the time required to process transactions and minimizing the risks associated with handling physical cash. Cashless systems also reduce losses due to theft, misplacement, and counting errors, which are common challenges in cash-based operations.
+One of the major advantages of cashless transactions for small businesses is improved financial record keeping. Electronic payments automatically generate transaction histories that help business owners monitor daily sales, track revenue, and manage expenses effectively. Kauffman and Riggins (2012) noted that digital transaction records improve financial transparency and support better decision-making, which is critical for business growth and sustainability.
+Customer convenience is another important factor driving the adoption of cashless systems. Modern consumers increasingly prefer electronic payment methods because they are faster, safer, and more convenient than carrying physical cash. A study by Slade, Williams, and Dwivedi (2015) found that businesses offering multiple digital payment options experience higher customer satisfaction and improved service efficiency. In retail environments such as pharmacies and supermarkets, faster payment processing reduces queues and enhances the overall customer experience.
+The expansion of mobile technology has further supported the adoption of cashless transactions among small-scale businesses. Mobile banking applications and digital wallets allow business owners to receive payments without investing in expensive hardware. According to Jack and Suri (2014), mobile-based financial services have significantly improved the ability of small businesses in developing countries to participate in formal financial systems.
+Despite these benefits, several challenges affect the adoption of cashless transactions by small enterprises. One major concern is the cost associated with payment infrastructure, such as POS devices, transaction fees, and maintenance charges. Many small business owners perceive these costs as reducing their profit margins (Adewoye, 2013).
+Infrastructure limitations also affect the reliability of digital payments. Poor internet connectivity, unstable power supply, and network congestion can lead to transaction failures or delays. Donner and Tellez (2008) observed that unreliable infrastructure remains one of the key barriers to digital financial service adoption in developing economies.
+Security concerns also influence adoption decisions. Fear of cyber fraud, unauthorized transactions, and system errors reduces trust in electronic payment systems among both business owners and customers. Additionally, limited digital literacy and lack of technical knowledge may hinder effective use of digital payment platforms.
+Another important factor affecting adoption is customer behavior. In many developing countries, a large proportion of consumers still prefer cash due to familiarity and perceived reliability. As a result, small businesses often maintain both cash and digital payment options to accommodate different customer preferences.
+Recent developments between 2022 and 2025 have shown increased adoption of cashless payments among small businesses in Nigeria, particularly following the cash scarcity experienced during the 2023 currency redesign. This situation forced many businesses to rely more on electronic payment channels, highlighting the importance of reliable and low-cost digital payment solutions.
+2.1.6Nigeria Quick Response (NQR) Payment System
+The Nigeria Quick Response (NQR) payment system is a standardized QR-based payment solution introduced to promote seamless, low-cost, and interoperable digital transactions across the Nigerian financial system. The platform was developed by the Nigeria Inter-Bank Settlement System (NIBSS) in collaboration with the Central Bank of Nigeria (CBN) as part of efforts to support the country’s cashless policy and enhance financial inclusion.
+The NQR system enables customers to make payments by scanning a QR code generated by a merchant using any mobile banking or digital payment application. Unlike traditional QR systems that may be restricted to specific banks or payment providers, NQR is interoperable, allowing payments across different banks and financial institutions (NIBSS, 2021).
+The operation of the NQR system follows a simple process. A merchant generates a static or dynamic QR code linked to their bank account. The customer scans the code using their mobile banking application, enters the payment amount (for static QR), confirms the transaction, and receives instant confirmation. The merchant also receives a real-time payment notification. This process eliminates the need for POS terminals, card swiping, or manual bank transfers.
+One of the key advantages of the NQR system is its affordability. According to Eke and Alabar (2022), QR-based payment solutions significantly reduce the cost of accepting electronic payments because they do not require expensive hardware or high maintenance. This makes the system particularly suitable for small-scale businesses and informal sector operators.
+The NQR system also improves transaction speed and efficiency. Real-time payment confirmation reduces the need for manual verification, which is common with traditional bank transfers. This feature is especially important in busy retail environments where quick transaction processing is necessary to maintain customer satisfaction.
+Another important benefit of NQR is its role in promoting financial inclusion. Many small businesses that previously operated solely on cash can now receive digital payments using only a printed QR code and a smartphone. According to Ozili (2022), interoperable payment systems such as NQR help integrate small merchants into the formal financial system and support the growth of digital economies.
+Security is also a major feature of the NQR platform. Transactions are processed through secure banking networks and require customer authentication through mobile banking applications. This reduces the risk of fraud compared to manual transfer methods where payment details are entered manually.
+The introduction of NQR has also supported the growth of Nigeria’s FinTech ecosystem by providing a standardized infrastructure for QR-based payment services. Financial institutions and FinTech companies can integrate their platforms with NQR, ensuring compatibility and wider adoption.
+Despite its advantages, the implementation of the NQR system faces several challenges. Limited awareness among small business owners, low smartphone penetration in some areas, and unreliable internet connectivity may affect usage. In addition, trust issues and resistance to new technologies may slow adoption among some users.
+Recent studies indicate that the NQR system has gained increased attention between 2022 and 2025, particularly during periods of cash shortages and increased demand for contactless payments. As more businesses and customers become familiar with QR-based payments, the system is expected to play a significant role in strengthening Nigeria’s cashless economy.
+2.2Empirical Review
+This section presents recent empirical studies on cashless payment adoption, QR code payment systems, digital payment usage among small and medium enterprises (SMEs), and customer acceptance of cashless transactions. 
+2.2.1Studies on Cashless Payment Adoption
+Recent empirical studies indicate a significant global increase in the adoption of cashless payment systems, particularly in developing economies. A study by Kumar and Gupta (2023) examined the determinants of cashless payment adoption among urban consumers in India using survey data and structural equation modeling. The findings revealed that perceived usefulness, ease of use, and trust significantly influenced users’ intention to adopt digital payment systems. The study also found that government policies promoting digital transactions played an important role in accelerating adoption.
+Oluwafemi and Adewale (2024) conducted a quantitative study to assess the impact of the 2023 cash scarcity on electronic payment usage. Using data collected from small businesses and consumers across major cities, the researchers reported a substantial increase in the use of mobile transfers and digital payment platforms during the period. However, the study also highlighted major operational challenges such as network congestion, delayed transaction alerts, and system failures, which affected user satisfaction.
+Mensah and Adams (2022) investigated cashless payment adoption in Ghana’s retail sector. Their findings showed that businesses that adopted electronic payment systems experienced improved operational efficiency and better financial record management. However, the study identified infrastructure challenges such as unstable internet connectivity and high transaction costs as major barriers to sustained adoption.
+Alalwan et al. (2022) examined digital payment adoption across several developing countries. The results indicated that perceived security, transaction reliability, and system availability were critical factors influencing continued usage. The researchers concluded that improving payment system infrastructure and cybersecurity measures is essential for strengthening user confidence.
+2.2.2Studies on QR Code Payment Systems
+Li, Wu, and Chen (2023) conducted an empirical study on QR payment adoption among retail merchants in China. Using survey data from small business owners, the study found that QR payments significantly reduced transaction processing time and operational costs compared to traditional POS systems. The researchers also reported improved customer satisfaction due to faster service delivery.
+Phan and Ho (2022) examined the effectiveness of QR-based payments among small retailers. Their findings showed that QR payment systems enhanced transaction accuracy and eliminated the need for manual verification commonly associated with bank transfers. However, the study noted that user awareness and digital literacy significantly influenced adoption rates.
+Rahman et al. (2024) evaluated QR payment usage in urban retail environments. The results indicated that QR payments improved transaction efficiency and reduced queue time during peak business hours. The study also found that merchants preferred QR systems due to their low setup cost and minimal hardware requirements.
+Okeke and Nwosu (2025) conducted a field study on QR payment adoption among small businesses following the introduction of the Nigeria Quick Response (NQR) system. The findings revealed that QR-based payments improved transaction confirmation speed and reduced operational challenges associated with POS failures. However, the study identified low awareness and limited technical knowledge among business owners as major constraints.
+These empirical findings confirm that QR payment systems are cost-effective and operationally efficient, particularly for small-scale retail environments.
+2.2.3Digital Payment Adoption in Small and Medium Enterprises (SMEs)
+Small and medium enterprises (SMEs) are increasingly adopting digital payment systems to improve operational efficiency and competitiveness. Nguyen and Dang (2022) conducted a study on digital payment adoption among SMEs in Vietnam. The results showed that businesses using electronic payment systems experienced improved financial transparency, reduced cash handling risks, and better sales monitoring.
+Abor and Quartey (2023) examined the role of digital payments in SME performance in sub-Saharan Africa. Their empirical analysis revealed that digital payment adoption was positively associated with business growth, improved customer service, and increased revenue. However, the study highlighted that high transaction fees and lack of technical skills limited adoption among micro-enterprises.
+Akinwale and Kyari (2024) investigated digital payment usage among small retail businesses. Using survey data from business owners, the researchers found that mobile transfers were the most commonly used payment method due to their low cost. However, manual payment confirmation and delayed transaction alerts were identified as major operational challenges affecting efficiency.
+Chong, Lim, and Ling (2022) examined factors influencing FinTech adoption among SMEs. The findings showed that perceived cost savings, operational efficiency, and customer demand were key drivers of adoption. However, concerns about cybersecurity risks and system reliability remained significant barriers.
+2.2.4Customer Acceptance of Cashless Transactions
+Customer acceptance plays a critical role in the success of cashless payment systems. Al-Saedi et al. (2022) examined consumer intention to use mobile and digital payment systems using the Unified Theory of Acceptance and Use of Technology (UTAUT) model. The study found that performance expectancy, effort expectancy, social influence, and perceived security significantly affected user adoption.
+A study by Boateng et al. (2023) investigated consumer attitudes toward cashless payments in African urban markets. The findings showed that convenience, speed, and transaction security were the primary factors influencing customer preference for digital payments. However, concerns about fraud and transaction errors reduced trust among some users.
+In Nigeria, Ezeh and Ndukwe (2024) conducted a survey-based study on consumer acceptance of electronic payments after the 2023 cash shortage. The results indicated increased willingness to use digital payments, particularly mobile banking and QR-based systems. However, network failures and transaction delays negatively affected user experience.
+Shankar and Datta (2022) examined customer satisfaction with digital payment services in the retail sector. The study reported that instant confirmation, ease of use, and system reliability significantly influenced customer satisfaction and continued usage intention.
+Omarini (2023) found that trust and perceived risk remain critical determinants of customer adoption of digital financial services. The study emphasized the need for improved system security and customer awareness to enhance confidence in cashless payment systems.
+Overall, empirical evidence shows that customers are increasingly accepting cashless transactions due to convenience and speed. However, system reliability, security, and user trust remain essential factors influencing long-term adoption.
+2.3Problems or Issues Identified in Existing Systems
+2.3.1Challenges of Card and POS Transactions
+Despite the widespread use of card-based payment systems, several operational challenges continue to affect their efficiency and reliability. Debit and credit card transactions processed through Point of Sale (POS) terminals are often subject to transaction failures, declined payments, and delayed processing. These issues are commonly caused by network instability, system downtime, or communication errors between issuing and acquiring banks. Studies have shown that failed or slow transactions negatively affect customer satisfaction and may result in abandoned purchases and loss of revenue, particularly in high-traffic retail environments (Akinwale & Kyari, 2024).
+Another major concern is the cost associated with POS operations. Small-scale business owners are required to acquire POS devices, maintain network connectivity, and pay transaction service charges. These costs reduce profit margins, especially for businesses that handle low-value, high-volume transactions. In addition, POS devices are prone to technical faults such as battery failure, hardware malfunction, and connectivity interruptions, which can disrupt daily business operations. 
+2.3.2Network and Infrastructure Challenges
+Electronic payment systems depend heavily on reliable network connectivity and stable power supply. In many developing economies, including Nigeria, poor internet connectivity and frequent power outages significantly affect the performance of digital payment platforms. Network congestion during peak transaction periods often leads to slow processing and delayed confirmation messages.
+Such delays create operational uncertainty, especially when customers are debited but the merchant does not receive immediate payment confirmation. This situation frequently results in disputes, service delays, and loss of customer trust. The limitations of payment infrastructure became more evident during periods of high digital payment demand, such as the 2023 cash scarcity, when payment networks experienced congestion and service interruptions (Oluwafemi & Adewale, 2024).
+2.3.3Security and Fraud Concerns
+Security remains one of the most critical concerns affecting the adoption and continued use of digital payment systems. The increase in electronic transactions has been accompanied by rising cases of cyber fraud, phishing attacks, identity theft, and unauthorized deductions. Customers often fear that their financial information may be compromised, which reduces confidence in electronic payment platforms (Omarini, 2023).
+Card-related fraud such as card cloning and unauthorized transactions has also been widely reported. In addition, mobile transfer payments present operational security risks because merchants often rely on manual confirmation before releasing goods. Fraudsters may present fake transaction alerts or edited screenshots as proof of payment, leading to financial losses for businesses.
+2.3.4Operational Challenges for Small Businesses
+Small-scale businesses face additional operational difficulties when managing existing electronic payment methods. Many businesses accept multiple payment channels, including cash, POS, and mobile transfers, in order to meet customer preferences. Managing these different systems increases workload and complicates transaction monitoring.
+Mobile bank transfers, although widely used, require manual verification of payment alerts. During peak business hours, this process slows down service delivery and increases the likelihood of human error. Delayed transaction notifications further complicate the verification process and may lead to customer disputes.
+Digital literacy is another important factor affecting system efficiency. Some business owners lack the technical knowledge required to operate digital payment platforms effectively, resulting in operational errors or reluctance to adopt new technologies. Limited access to technical support further increases these challenges.
+In addition, transaction fees associated with card payments and interbank transfers reduce profit margins for small businesses. These financial burdens discourage the promotion of electronic payments and may lead businesses to prioritize cash transactions instead.
+Customer behavior also contributes to operational complexity. Many customers still prefer cash due to familiarity and perceived reliability. As a result, businesses must maintain both cash and electronic payment options, increasing operational costs and slowing the transition to a fully cashless environment.
+2.4Solutions Explored Previously
+Over the years, several technological solutions have been developed to address the operational inefficiencies, security concerns, and infrastructure limitations associated with traditional payment systems. These solutions aim to improve transaction speed, enhance security, reduce operational costs, and increase the accessibility of digital payment services for both businesses and consumers.
+One of the earliest solutions to cash handling challenges was the introduction of card-based payment systems supported by Point of Sale (POS) terminals. These systems allow customers to make payments using debit or credit cards, while merchants receive instant transaction authorization and electronic records. Studies have shown that POS systems improve transaction accuracy, reduce cash-related risks, and enhance financial transparency for businesses (Hasan et al., 2013). However, the effectiveness of POS systems is limited by high operational costs, transaction charges, and dependence on stable network connectivity.
+Mobile banking and electronic transfer systems were later introduced as a more flexible alternative. These platforms allow customers to transfer funds directly to merchants using mobile applications, USSD services, or internet banking. According to Donou-Adonsou and Sylwester (2016), mobile-based financial services improve accessibility and reduce the need for specialized payment hardware. For small-scale businesses, mobile transfers provide a low-cost method of receiving payments. Nevertheless, the need for manual verification of payment alerts and the occurrence of delayed transaction notifications continue to affect operational efficiency.
+Digital wallets and FinTech-based payment platforms have also emerged as integrated solutions for electronic transactions. These platforms allow users to store funds digitally, make payments, and access additional financial services within a single application. Research by Gomber, Koch, and Siering (2017) indicates that FinTech innovations have significantly improved transaction convenience, reduced processing time, and enhanced financial inclusion. However, concerns about cybersecurity risks, data privacy, and system reliability remain major challenges affecting user trust.
+2.4.3QR-Based Payment Solutions
+QR-based payment systems have emerged as one of the most promising solutions to the limitations of traditional electronic payment methods. These systems allow merchants to generate Quick Response (QR) codes containing payment information, which customers scan using mobile banking or digital wallet applications to complete transactions instantly.
+One of the major advantages of QR payment systems is their low implementation cost. Unlike POS terminals that require specialized hardware, QR payments only require a printed or digital code and a smartphone. According to Liébana-Cabanillas et al. (2020), this affordability makes QR technology particularly suitable for small and medium-sized enterprises (SMEs) with limited financial resources.
+Empirical studies have shown that QR-based payments improve transaction speed and operational efficiency. Li, Wu, and Chen (2023) found that retail businesses using QR payment systems experienced reduced transaction processing time and improved customer flow. The study also reported that instant payment confirmation eliminated the need for manual verification, thereby reducing operational workload for merchants.
+QR payment systems also enhance transaction accuracy and security. Since payment details are embedded within the code, the risk of manual entry errors is minimized. In addition, modern QR payment platforms incorporate encryption and user authentication to protect against unauthorized transactions (Kieseberg et al., 2010).
+The flexibility of QR technology further supports its adoption across various sectors, including retail, transportation, healthcare, and hospitality. Standardized QR frameworks, such as national interoperable QR systems, allow customers to make payments using any banking application, thereby improving accessibility and user convenience (World Bank, 2022).
+Despite these advantages, some challenges remain. Studies have identified limited user awareness, low digital literacy, and dependence on internet connectivity as factors that may affect the effectiveness of QR payment systems, particularly in developing regions. Nevertheless, QR technology is widely regarded as a practical and scalable solution for supporting low-cost digital payments.
+2.5Review of Related Works
+Several studies have examined cashless payment systems, QR code technology, and digital payment adoption among businesses and consumers. Kumar and Gupta (2023) found that perceived usefulness, trust, and ease of use significantly influence the adoption of digital payment systems among consumers. Similarly, Oluwafemi and Adewale (2024) reported that the 2023 cash scarcity in Nigeria increased the use of electronic payment systems such as mobile transfers and QR payments, although network congestion and delayed transaction confirmations remained major operational challenges. 
+Mensah and Adams (2022) observed that businesses using cashless payment systems experienced improved financial management and operational efficiency. However, unstable internet connectivity and high transaction charges affected system reliability. Li, Wu, and Chen (2023) also revealed that QR payment systems reduced transaction processing time and operational costs while improving customer satisfaction in retail environments. 
+Phan and Ho (2022) concluded that QR payments improved transaction accuracy and eliminated manual verification associated with traditional bank transfers. Similarly, Okeke and Nwosu (2025) found that the Nigeria Quick Response (NQR) system improved payment confirmation speed among small businesses in Nigeria. 
+Despite the numerous benefits identified in previous studies, several challenges continue to affect the effective implementation of digital payment systems. Researchers such as Omarini (2023) and Lee and Shin (2018) identified cybersecurity threats, system downtime, network instability, and low digital literacy as major barriers to adoption. These problems are particularly significant among small-scale businesses operating within developing economies where infrastructure limitations remain common. 
+Although many previous studies focused on digital payments and QR technology, limited research has specifically examined the practical implementation of QR-based cashless transaction systems for small-scale retail businesses in Nigeria. Most existing studies focus on customer adoption, general digital payment systems, or large-scale financial platforms without providing practical system implementation frameworks for small businesses. This gap therefore justifies the need for the present study on the design and implementation of a QR-based cashless transaction system for H-Medix Pharmacy and Supermarket, Abuja.
+2.6Gaps in Previous Studies
+Although many studies have examined digital payment systems, several important gaps still exist. First, most research focuses on general adoption of electronic payments without examining how specific systems, such as QR payments, perform in real business environments. There is limited practical evidence showing how QR payment systems improve daily operations in small retail settings.
+Second, many previous studies concentrate on large organizations or urban financial systems, while small-scale businesses receive less attention. Small businesses have unique challenges such as limited capital, high sensitivity to transaction costs, poor infrastructure, and the need for simple and easy-to-use payment solutions. These specific needs are not adequately addressed in existing research.
+Third, while customer acceptance of digital payments has been widely studied, fewer studies evaluate the operational impact on businesses, such as transaction speed, error reduction, ease of record keeping, and overall efficiency.
+In Nigerian, research on the practical use of standardized QR systems like the Nigeria Quick Response (NQR) is still limited, especially at the micro-business level. Many studies identify problems such as network failure, fraud risk, and system delays but do not propose or test practical, low-cost solutions. These gaps highlight the need to design and evaluate a simple, reliable QR-based cashless system specifically for small-scale businesses.
+2.7Summary of Literature Review 
+Author(s)
+Year
+Title/Area of Study
+Findings
+Gap Identified
+Kumar and Gupta
+2023
+Cashless Payment Adoption in India
+Perceived usefulness and trust influence digital payment adoption
+Did not focus on QR payment systems for small businesses
+Oluwafemi and Adewale
+2024
+Impact of Cash Scarcity on Digital Payments
+Increase in digital payment usage during cash scarcity
+Operational implementation challenges were not fully addressed
+Mensah and Adams
+2022
+Cashless Payment Adoption in Ghana
+Improved financial management and operational efficiency
+Limited focus on QR payment technology
+Li, Wu, and Chen
+2023
+QR Payment Adoption in China
+QR systems reduced transaction time and operational cost
+Study focused mainly on large retail environments
+Phan and Ho
+2022
+QR Payment Effectiveness
+QR systems improved transaction accuracy
+Limited focus on Nigerian business environments
+Rahman et al.
+2024
+QR Payment in Urban Retail
+Reduced queue time and improved efficiency
+No practical implementation framework provided
+Okeke and Nwosu
+2025
+NQR Adoption in Nigeria
+QR payments improved transaction confirmation speed
+Low awareness and technical knowledge remained challenges
+Nguyen and Dang
+2022
+Digital Payments among SMEs
+Improved transparency and sales monitoring
+Did not examine QR-based systems specifically
+Abor and Quartey
+2023
+Digital Payment and SME Performance
+Improved customer service and business growth
+Limited practical system design analysis
+Al-Saedi et al.
+2022
+Customer Acceptance of Digital Payments
+Security and convenience influence adoption
+Did not evaluate operational business performance
+Boateng et al.
+2023
+Consumer Attitude toward Cashless Payments
+Customers prefer convenience and speed
+Limited focus on small-scale businesses
+Omarini
+2023
+Security Challenges in Digital Payments
+Cybersecurity and trust affect adoption
+Did not propose practical low-cost payment solutions
+CHAPTER THREE
+RESEARCH METHODOLOGY, SYSTEM ANLYSIS AND DESIGN
+3.0Introduction
+This chapter presents the methodology adopted for the design and implementation of the QR-based cashless transaction system for small-scale businesses using H-Medix Pharmacy and Supermarket, Abuja, as a case study. The methodology explains the various procedures, techniques, tools, and approaches used in carrying out the study and developing the proposed system. 
+3.1Research Methodology
+Research methodology encompasses the various procedures, techniques, methods, and approaches employed in conducting a study. It provides a systematic framework that guides the researcher in achieving the objectives of the research. Methodology is broader than research methods because it includes the principles, strategies, and processes that govern the entire research and development activities. Therefore, research methodology serves as the foundation for planning, data collection, system analysis, design, implementation, testing, evaluation, and documentation of the proposed system.
+For this study, a combination of descriptive and developmental research methodologies was adopted to facilitate the design and implementation of the QR-Based Cashless Transaction System for Small-Scale Businesses using H-Medix Pharmacy and Supermarket, Abuja, as a case study. The descriptive methodology was used to examine and understand the existing payment processes, identify their limitations, and determine the requirements needed for an improved solution. The developmental methodology was employed because the study involved the development of a functional software application aimed at solving identified payment-related challenges.
+The system was developed using the Software Development Life Cycle (SDLC), specifically the Waterfall Model. The Waterfall Model is a structured and sequential software development approach widely used in information system development. It divides the development process into distinct phases, with each phase completed before proceeding to the next. The major phases include requirement analysis, system design, implementation, testing, deployment, and maintenance. This model was selected because it provides a clear development framework, facilitates proper documentation, and ensures systematic progression throughout the software development process.
+The adoption of the Waterfall Model enabled the researcher to analyze the existing payment system, identify operational problems, design the proposed QR-based solution, develop the software, conduct testing procedures, and evaluate the effectiveness of the system before deployment. This structured approach ensured that the developed system met user requirements and provided a secure, reliable, and efficient payment solution for small-scale businesses. 
+3.2Research Design
+The descriptive and developmental research methods were adopted for this study. The descriptive method was used to explain the current payment processes used by small-scale businesses, identify the operational problems associated with existing systems, and describe the features of the proposed QR-based payment solution. This method helped the researcher understand the weaknesses of traditional payment methods such as cash transactions, POS operations, and manual transfer verification.
+The developmental research method was adopted because the study involves the design, development, implementation, and testing of a functional software system. The developmental approach provides a systematic framework for developing a solution that addresses identified problems within the existing payment environment. It also supports software planning, system modeling, database design, coding, testing, debugging, and deployment.
+The research design followed a systematic procedure consisting of problem formulation, research planning, data collection, data processing, system design, implementation, testing, evaluation, and documentation. This structured approach ensures that the developed system meets user requirements and performs effectively within the selected business environment.
+3.3Functional Requirements
+The functional requirements describe the specific operations and activities the proposed QR-based cashless transaction system must perform in order to achieve its objectives effectively. These requirements define the major services and features that users will interact with during system operation.
+The proposed system should be able to perform the following functions:
+User Registration and Login: The system should allow users such as administrators and merchants to register and securely log into the system using usernames and passwords. 
+QR Code Generation: The system should generate unique QR payment codes containing transaction and payment details for customers. 
+QR Code Scanning: Customers should be able to scan the generated QR code using mobile banking or payment applications. 
+Payment Processing: The system should process customer payments instantly after QR code scanning and payment authorization. 
+Transaction Verification: The system should automatically verify payment status before confirming successful transactions. 
+Payment Confirmation: The system should display successful payment confirmation messages to both customers and merchants immediately after payment completion. 
+Transaction Record Storage: The system should store all transaction records securely within the database for future reference and monitoring. 
+Transaction History Management: The system should allow users to view previous transactions and payment history. 
+User Management: The administrator should be able to manage users, update records, and monitor transaction activities. 
+Report Generation: The system should generate transaction reports for business monitoring and financial tracking purposes. 
+3.3.1Non-Functional Requirements
+Non-functional requirements describe the quality attributes, performance standards, and operational characteristics expected from the proposed system. These requirements ensure that the system performs efficiently, securely, and reliably under different operational conditions.
+The proposed system should satisfy the following non-functional requirements:
+Security: The system should provide secure authentication and protect user information and transaction data from unauthorized access. 
+Reliability: The system should operate consistently without frequent failures or transaction errors. 
+Scalability: The system should be capable of handling increasing numbers of users and transaction volumes as business operations expand. 
+User Friendliness: The system interface should be simple, clear, and easy to navigate for both customers and merchants. 
+Fast Processing Speed: The system should process transactions quickly in order to reduce customer waiting time and improve operational efficiency. 
+Accuracy: The system should provide accurate transaction processing and maintain correct financial records without duplication or loss of data. 
+Availability: The system should be accessible whenever users need to perform transactions or retrieve transaction information. 
+Maintainability: The system should be easy to maintain, update, and improve whenever necessary. 
+Compatibility: The system should function properly across different devices such as smartphones, tablets, and computer systems. 
+Efficiency: The system should utilize system resources effectively while maintaining high transaction performance.
+3.4System Architecture
+System architecture refers to the structural design that explains how the different components of the QR-based cashless transaction system interact with one another to achieve efficient payment processing and transaction management. The proposed system adopts a three-tier architecture consisting of the presentation layer, application layer, and database layer. This structure was selected because it improves scalability, security, flexibility, and system maintenance.
+The presentation layer serves as the user interface where customers, merchants, and administrators interact with the system using smartphones, computers, or web browsers. Through this interface, users can generate QR codes, scan QR codes, make payments, verify transactions, and view transaction history. The interface is designed to be user-friendly and easy to navigate in order to improve customer experience and operational efficiency.
+The application layer handles the core business logic of the system. It processes payment requests, verifies transactions, authenticates users, generates QR codes, and communicates with the database layer. This layer acts as the bridge between the user interface and the database. It ensures that all transactions are validated before processing and recording them in the database.
+The database layer stores all system information such as user accounts, transaction records, QR code details, payment history, and system logs. MySQL database management system is used because it provides reliability, speed, and efficient data management capabilities. The system architecture therefore ensures secure and efficient communication among all system components.
+3.5Use Case Diagram 
+The Use Case Diagram explains how different users interact with the QR-based cashless transaction system. The main actors in the system are the customer, merchant/cashier, administrator, and payment platform. Customers use the system to scan QR codes, make payments, and receive confirmations, while merchants generate QR codes, verify payments, and monitor transactions. The administrator manages users, transactions, and the database.
+The diagram helps in identifying the functional requirements of the system by showing the responsibilities of each actor and their interaction with the system. It also supports system planning, implementation, and testing by ensuring that all required functions are properly developed for effective system operation.
+Scan QR code Scan QR code 
+Scan QR code 
+Scan QR code 
+PAYMENT SYSTEM (Bank/ Mobile BankingPAYMENT SYSTEM (Bank/ Mobile BankingCashier/Marchant  Cashier/Marchant  Administrator Administrator View transaction HistoryView transaction HistoryManage UserManage UserManage DatabaseManage DatabaseMonitor TransactionMonitor TransactionReceived Confirmation Received Confirmation Make PaymentMake PaymentLogin Login Generate QR CodeGenerate QR CodeVerify transactionVerify transactionCustomer Customer Figure 3.2: Use Case DiagramFigure 3.2: Use Case Diagram
+PAYMENT SYSTEM (Bank/ Mobile Banking
+PAYMENT SYSTEM (Bank/ Mobile Banking
+Cashier/Marchant  
+Cashier/Marchant  
+Administrator 
+Administrator 
+View transaction History
+View transaction History
+Manage User
+Manage User
+Manage Database
+Manage Database
+Monitor Transaction
+Monitor Transaction
+Received Confirmation 
+Received Confirmation 
+Make Payment
+Make Payment
+Login 
+Login 
+Generate QR Code
+Generate QR Code
+Verify transaction
+Verify transaction
+Customer 
+Customer 
+Figure 3.2: Use Case Diagram
+Figure 3.2: Use Case Diagram
+3.6Data Flow Diagram (DFD)
+The Data Flow Diagram (DFD) is a graphical representation that illustrates the movement of data within the QR-based cashless transaction system. It explains how data flows from one process to another and how users interact with the system during transaction processing. The DFD is important because it provides a clear understanding of how information is processed, stored, and transferred throughout the system.
+The Context Level DFD presents the entire system as a single process and shows the interaction between external entities such as customers and merchants with the payment system. Customers send payment requests to the system through QR scanning, while merchants receive payment confirmation and transaction updates.
+QR code RequestTransaction StatusQR code RequestTransaction StatusPayment RequestPayment ConfirmationPayment RequestPayment Confirmation
+QR code Request
+Transaction Status
+QR code Request
+Transaction Status
+Payment Request
+Payment Confirmation
+Payment Request
+Payment Confirmation
+MERCHANTMERCHANTCUSTOMERCUSTOMERQR PAYMENT SYSTEMQR PAYMENT SYSTEM
+MERCHANT
+MERCHANT
+CUSTOMER
+CUSTOMER
+QR PAYMENT SYSTEM
+QR PAYMENT SYSTEM
+Figure 3.3: Data Flow Diagram (DFD)
+The Level 1 DFD provides a more detailed explanation of the internal processes involved in the payment operation. These processes include QR code scanning, payment processing, transaction verification, transaction storage, and receipt generation. Each process interacts with the database to retrieve or store transaction information.
+Scan QR CodeProcess PaymentVerify TransactionTransaction DatabaseStore TransactionGenerate ReceiptScan QR CodeProcess PaymentVerify TransactionTransaction DatabaseStore TransactionGenerate Receipt
+Scan QR Code
+Process Payment
+Verify Transaction
+Transaction 
+Database
+Store Transaction
+Generate Receipt
+Scan QR Code
+Process Payment
+Verify Transaction
+Transaction 
+Database
+Store Transaction
+Generate Receipt
+Figure 3.4: Data Flow Diagram (Level 1 DFD)
+The DFD helps the researcher understand how data moves efficiently through the system and also identifies potential points of delay or error during transaction processing. It serves as an important design tool that supports system development, debugging, and maintenance. The use of DFD also improves documentation and communication among developers and system users because it simplifies complex processes into understandable graphical representations.
+3.7Entity Relationship Diagram (ERD)
+The Entity Relationship Diagram (ERD) describes the relationship between the major entities within the database structure of the QR payment system. It provides a visual representation of how data is stored, connected, and managed within the database environment.
+The major entities identified in the system include Users, Transactions, Payments, and QR Codes. The Users entity stores information about customers, merchants, and administrators. The Transactions entity stores payment transaction details such as transaction ID, amount, transaction date, and transaction status. The Payments entity contains payment method details and payment confirmation information, while the QR Codes entity stores generated QR code information linked to transactions.
+Relationships exist between these entities to ensure efficient data management. For example, a user can perform multiple transactions, while each transaction generates a corresponding QR code and payment record. These relationships help maintain data integrity and reduce redundancy within the database.
+The ERD plays an important role during database implementation because it provides the structural foundation for creating tables, relationships, and constraints in the database management system. It also supports database normalization and improves overall system performance.
+By properly organizing the database entities and their relationships, the proposed system achieves efficient storage, easy retrieval of records, and improved transaction management.
+Figure 3.5: Entity Relationship Diagram (ERD)
+3.8Requirement Gathering and Analysis
+System requirements are the minimum configurations needed for the successful development and operation of the QR-based cashless transaction system. These requirements ensure that the application runs efficiently, securely, and without operational problems. The requirements are grouped into hardware, software, and database requirements.
+3.8.1Computer Hardware Requirement
+The following hardware requirements are needed for the development and implementation of the proposed system:
+Microsoft® Windows® 7/8/10/11 (32-bit or 64-bit) 
+Intel Core i3 processor or higher 
+Minimum of 4 GB RAM 
+Minimum of 500 GB storage capacity (SSD/HDD) 
+1280 × 800 screen resolution 
+Stable internet connection 
+Android smartphone for QR code testing 
+3.8.2Computer Software Requirement
+The following software requirements are needed for developing the proposed system:
+Visual Studio Code (VS Code) 
+XAMPP Server 
+PHP Programming Language 
+HTML, CSS, and JavaScript 
+Google Chrome or Mozilla Firefox Browser 
+QR Code Generator Library/API 
+3.8.3Database Software Requirement
+The following database requirements are needed for storing and managing transaction records within the system:
+MySQL Database Server 
+phpMyAdmin 
+XAMPP Control Panel 
+These requirements ensure proper database management, secure transaction storage, and smooth system performance.
+3.9Method of Data Collection
+The method of data collection refers to the procedures and techniques used by a researcher to obtain relevant information required for the successful completion of a study. Data collection is an important aspect of research because it provides the necessary information for system analysis, design, development, and evaluation. For this study, both primary and secondary sources of data collection were employed to gather information about the existing payment processes and the requirements for the proposed QR-based cashless transaction system.
+Primary Source
+Primary data refers to original information collected directly from respondents or the study environment for the specific purpose of the research. In this study, primary data were obtained through personal interviews, direct observation, and discussions with the management and staff of H-Medix Pharmacy and Supermarket, Abuja. These methods enabled the researcher to gather firsthand information about the current payment processes, operational challenges, transaction procedures, and user requirements for the proposed system.
+Secondary Source
+Secondary data refers to information obtained from existing materials that have already been documented by other researchers, organizations, or institutions. The researcher obtained secondary data from textbooks, journals, conference papers, research reports, online publications, articles, and other relevant academic materials related to cashless payment systems, QR code technology, electronic transactions, and software development methodologies. These sources provided theoretical and practical insights that supported the study.
+3.9.1Interview Method
+The interview method is a systematic process of collecting information through direct interaction between the researcher and respondents. It allows the researcher to obtain detailed explanations, opinions, and experiences regarding the subject under investigation. For this study, interviews were conducted with the management and operational staff of H-Medix Pharmacy and Supermarket, Abuja.
+The interview sessions focused on understanding the existing transaction procedures, challenges associated with cash payments, POS transactions, and mobile bank transfers, as well as expectations for an improved payment system. Information obtained from the interviews assisted the researcher in identifying system requirements, operational weaknesses, and user expectations that guided the design and development of the proposed QR-based cashless transaction system.
+3.9.2Observation Method
+Observation involves the direct examination of activities, processes, and events within the study environment. This method enabled the researcher to observe how payment transactions were processed within the business environment. Through observation, the researcher identified issues such as delayed transaction confirmations, manual verification of transfers, customer waiting time, network-related challenges, and record management practices.
+The information gathered through observation complemented data obtained from interviews and provided a clearer understanding of the operational challenges affecting payment processing. The findings from the observation exercise contributed significantly to the design of the proposed QR-based cashless transaction system by ensuring that the developed solution addressed real-life business needs and operational requirements.
+3.10Analysis of the Existing System
+The existing payment system used by many small-scale businesses mainly involves cash transactions, POS transactions, and mobile bank transfers. Although these payment methods support electronic transactions to some extent, they still experience several operational challenges that reduce efficiency and reliability.
+Cash transactions require physical handling of money, which increases the risk of theft, loss, and counting errors. They also make financial record management difficult because transaction records are mostly handled manually. POS systems provide electronic payment services but depend heavily on stable internet connectivity and banking networks. Frequent network failures often lead to unsuccessful or delayed transactions, causing frustration for both customers and business owners.
+Mobile bank transfers have also become widely used due to the growth of mobile banking applications. However, this method requires manual verification of payment alerts before goods or services are released. Delayed transaction notifications and fake transfer alerts create operational risks and increase transaction processing time.
+The existing system also creates long customer queues during busy periods because payment confirmation sometimes takes several minutes. High POS maintenance costs and transaction charges further increase operational expenses for small businesses. These challenges highlight the need for a simpler, faster, and more reliable digital payment solution such as QR-based payment technology.
+3.10.1 Problems Identified in the Existing System
+S/N
+Problems Identified
+1
+Frequent POS network failure
+2
+Delayed transfer alerts
+3
+Manual payment verification
+4
+Long customer queues
+5
+High POS maintenance cost
+6
+Poor transaction tracking
+7
+Risk of fake payment alerts
+8
+Poor transaction reliability
+The identified problems significantly affect the efficiency of payment processing within small-scale retail environments. Frequent network failures and delayed transaction confirmations reduce customer confidence and slow down business operations. Manual verification of transfers consumes time and increases the possibility of human error. The risk of fraudulent alerts also creates financial insecurity for merchants.
+Furthermore, poor transaction tracking makes it difficult for businesses to maintain accurate financial records and monitor daily sales activities. High POS service charges reduce profitability, especially for businesses operating on small profit margins. These operational limitations therefore justify the need for an improved payment system capable of providing faster, safer, and more reliable transaction processing.
+3.11Analysis of the Proposed System
+The proposed system is a QR-based cashless transaction system developed to improve payment processing and transaction management within small-scale businesses. The system is designed to eliminate many of the operational problems associated with existing payment methods by introducing faster and more reliable digital transaction processing.
+The proposed system allows merchants to generate QR payment codes that customers can scan using their mobile banking applications. Once scanned, the payment is processed instantly, and transaction confirmation is automatically sent to both the customer and the merchant. This reduces the need for manual verification and minimizes transaction delays.
+The system also maintains digital transaction records within a database, making it easier for business owners to monitor sales activities and generate financial reports. The QR-based system reduces dependence on expensive POS devices and lowers operational costs for small businesses.
+In addition, the proposed system improves transaction security through user authentication and automatic payment verification. Since payment details are embedded within QR codes, the possibility of manual entry errors is reduced significantly. The system therefore provides a simple, affordable, secure, and efficient digital payment solution suitable for small-scale retail businesses.
+References
+Abor, J., & Quartey, P. (2023). Digital financial services and SME performance in sub-Saharan Africa. Journal of African Business, 24(2), 210–228. https://doi.org/10.1080/15228916.2022.2107895 
+Adeoti, O. O., & Oshotimehin, K. O. (2012). Adoption of point of sale terminals in Nigeria: Assessment of consumers’ level of satisfaction. Research Journal of Finance and Accounting, 3(1), 1–5. https://www.iiste.org/Journals/index.php/RJFA/article/view/1196 
+Adewoye, J. O. (2013). Impact of mobile banking on service delivery in the Nigerian banking industry. International Review of Management and Business Research, 2(2), 333–344. http://www.irmbrjournal.com 
+Akinwale, Y. O., & Kyari, A. K. (2024). Electronic payment adoption and operational efficiency among small retail businesses in Nigeria. International Journal of Financial Studies, 12(1), 45–60. https://doi.org/10.3390/ijfs12010045 
+Al-Saedi, K., Al-Emran, M., Ramayah, T., & Abusham, E. (2022). Mobile payment adoption: Extending UTAUT model. Technology in Society, 68, 101–110. https://doi.org/10.1016/j.techsoc.2021.101901 
+Alalwan, A. A., Dwivedi, Y. K., Rana, N. P., & Williams, M. D. (2022). Consumer adoption of digital payment systems in developing countries. Information Systems Frontiers, 24(3), 879–897. https://doi.org/10.1007/s10796-020-10032-w 
+Arango, C., Huynh, K. P., & Sabetti, L. (2020). Consumer payment choice: Merchant card acceptance versus pricing incentives. Journal of Banking & Finance, 55, 130–141. https://doi.org/10.1016/j.jbankfin.2015.03.003 
+Auer, R., Cornelli, G., & Frost, J. (2020). Covid-19, cash, and the future of payments. BIS Bulletin, 3, 1–6. https://www.bis.org/publ/bisbull03.pdf
+Boateng, H., Adam, D. R., & Okoe, A. F. (2023). Consumer attitudes toward cashless payments in emerging economies. Journal of Retailing and Consumer Services, 70, 103118. https://doi.org/10.1016/j.jretconser.2022.103118 
+Central Bank of Nigeria. (2023). Annual report and statement of accounts 2023. https://www.cbn.gov.ng
+Chen, H. (2019). The impact of mobile payment on retail operations and customer experience. Journal of Retailing and Consumer Services, 48, 1–8. https://doi.org/10.1016/j.jretconser.2019.01.002 
+Chong, A. Y. L., Lim, E. T. K., & Ling, H. (2022). FinTech adoption among SMEs: An empirical study. Industrial Management & Data Systems, 122(4), 950–968. https://doi.org/10.1108/IMDS-05-2021-0280 
+Dahlberg, T., Guo, J., & Ondrus, J. (2015). A critical review of mobile payment research. Electronic Commerce Research and Applications, 14(5), 265–284. https://doi.org/10.1016/j.elerap.2015.07.006 
+Donner, J., & Tellez, C. A. (2008). Mobile banking and economic development. Asian Journal of Communication, 18(4), 318–332. https://doi.org/10.1080/01292980802344190 
+Donou-Adonsou, F., & Sylwester, K. (2016). Mobile banking and economic development. Applied Economics Letters, 23(7), 473–476. https://doi.org/10.1080/13504851.2015.1071462 
+Ezeh, P. C., & Ndukwe, C. C. (2024). Consumer adoption of electronic payment systems after cash scarcity in Nigeria. African Journal of Economic and Management Studies, 15(1), 77–92. https://doi.org/10.1108/AJEMS-05-2023-0201 
+Gomber, P., Koch, J. A., & Siering, M. (2017). Digital finance and FinTech. Journal of Business Economics, 87(5), 537–580. https://doi.org/10.1007/s11573-017-0852-x
+Hasan, I., De Renzis, T., & Schmiedel, H. (2013). Retail payments and economic growth. Bank of Finland Discussion Paper No. 19. https://www.suomenpankki.fi
+Jack, W., & Suri, T. (2014). Risk sharing and mobile money. American Economic Review, 104(1), 183–223. https://doi.org/10.1257/aer.104.1.183
+Kauffman, R. J., & Riggins, F. J. (2012). ICT and microfinance sustainability. Electronic Commerce Research and Applications, 11(5), 450–468. https://doi.org/10.1016/j.elerap.2012.03.001 
+Kieseberg, P., Schrittwieser, S., Mulazzani, M., Huber, M., Weippl, E., & Holzinger, A. (2010). QR code security. https://doi.org/10.1109/ARES.2010.33
+Kumar, A., & Gupta, S. (2023). Determinants of cashless payment adoption. Journal of Financial Services Marketing, 28(2), 150–165. https://doi.org/10.1057/s41264-022-00174-5 
+Law, R., & So, S. (2010). QR codes in tourism marketing. Journal of Travel & Tourism Marketing, 27(6), 633–644. https://doi.org/10.1080/10548408.2010.508995 
+Lee, I., & Shin, Y. J. (2018). FinTech ecosystem. Business Horizons, 61(1), 35–46. https://doi.org/10.1016/j.bushor.2017.09.003 
+Li, Y., Wu, J., & Chen, H. (2023). QR code mobile payment adoption. Electronic Commerce Research, 23(1), 95–118. https://doi.org/10.1007/s10660-021-09480-y 
+Liébana-Cabanillas, F., Marinković, V., & Kalinić, Z. (2017). Mobile payment acceptance. Telematics and Informatics, 34(1), 129–141. https://doi.org/10.1016/j.tele.2016.08.003 
+Liébana-Cabanillas, F., Singh, N., Kalinic, Z., & Carvajal-Trujillo, E. (2020). Mobile payment adoption determinants. Industrial Management & Data Systems, 120(3), 621–638. https://doi.org/10.1108/IMDS-05-2019-0259 
+Mensah, I. K., & Adams, S. (2022). Electronic payment systems in Ghana. Information Development, 38(4), 623–636. https://doi.org/10.1177/02666669211003068 
+Nguyen, T. T., & Dang, T. K. (2022). Digital payment adoption among SMEs. Sustainability, 14(9), 5373. https://doi.org/10.3390/su14095373 
+NIBSS. (2021). Nigeria Quick Response (NQR) framework. https://nibss-plc.com.ng
+Ozili, P. K. (2018). Digital finance and financial inclusion. Borsa Istanbul Review, 18(4), 329–340. https://doi.org/10.1016/j.bir.2017.12.003
+Ozili, P. K. (2022). Digital financial inclusion in Nigeria. Journal of Payments Strategy & Systems, 16(1), 1–14.
+Phan, T. T., & Ho, J. C. (2022). QR payment adoption among small retailers. Asia Pacific Journal of Marketing and Logistics, 34(8), 1700–1716. https://doi.org/10.1108/APJML-07-2021-0485 
+Rahman, M. M., Islam, M. R., & Hossain, M. (2024). Effectiveness of QR payments. Journal of Retailing and Consumer Services, 75, 103542. https://doi.org/10.1016/j.jretconser.2023.103542 
+Shankar, A., & Datta, B. (2022). Customer satisfaction with digital payment services. International Journal of Bank Marketing, 40(5), 1025–1043. https://doi.org/10.1108/IJBM-07-2021-0314 
+Slade, E., Williams, M., & Dwivedi, Y. K. (2015). UTAUT2 and mobile payments. Information Systems Frontiers, 17(6), 1437–1452. https://doi.org/10.1007/s10796-014-9524-3 
+Soon, T. J. (2008). QR code. Synthesis Journal, 2008, 59–78.
+World Bank. (2022). Global Findex Database 2021. https://www.worldbank.org/globalfindex
+Zandi, M., Singh, V., & Irving, J. (2016). The impact of electronic payments on economic growth. https://www.moodysanalytics.com

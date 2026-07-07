@@ -1,0 +1,162 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helpers ───────────────────────────────────────────────────────────────
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isCashier() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'cashier';
+    }
+
+    function isCustomer() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'customer';
+    }
+
+    function isStaffOrAdmin() {
+      return isSignedIn() && (isAdmin() || isCashier());
+    }
+
+    // ─── Users ─────────────────────────────────────────────────────────────────
+    // Users can read/write their own document; admins can read all.
+
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // ─── Stores ────────────────────────────────────────────────────────────────
+    // Admins manage stores; cashiers can read their own store.
+
+    match /stores/{storeId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+      allow create: if isAdmin();
+    }
+
+    // ─── Transactions ──────────────────────────────────────────────────────────
+    // Cashiers & admins can read/write; customers can read their own transactions.
+
+    match /transactions/{transactionId} {
+      allow read: if isSignedIn() && (
+        isStaffOrAdmin() ||
+        resource.data.customerId == request.auth.uid
+      );
+      allow create: if isSignedIn();
+      allow update: if isStaffOrAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ─── Payments ──────────────────────────────────────────────────────────────
+
+    match /payments/{paymentId} {
+      allow read: if isSignedIn() && (
+        isStaffOrAdmin() ||
+        resource.data.customerId == request.auth.uid
+      );
+      allow create: if isSignedIn();
+      allow update: if isStaffOrAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ─── QR Payments ───────────────────────────────────────────────────────────
+    // Cashiers create QR payments; anyone (including unauthenticated customers
+    // scanning a QR link) can read a single QR payment to initiate a payment.
+
+    match /qrPayments/{qrPaymentId} {
+      allow read: if true;           // public read so customers can scan & pay
+      allow create: if isStaffOrAdmin();
+      allow update: if isSignedIn(); // customer confirms → updates status
+      allow delete: if isAdmin();
+    }
+
+    // ─── Customers ─────────────────────────────────────────────────────────────
+
+    match /customers/{customerId} {
+      allow read: if isSignedIn() && (
+        request.auth.uid == customerId ||
+        isStaffOrAdmin()
+      );
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && (request.auth.uid == customerId || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // ─── Cashiers ──────────────────────────────────────────────────────────────
+
+    match /cashiers/{cashierId} {
+      allow read: if isSignedIn() && (
+        request.auth.uid == cashierId ||
+        isAdmin()
+      );
+      allow write: if isAdmin();
+    }
+
+    // ─── Notifications ─────────────────────────────────────────────────────────
+    // Users read/write their own notifications; admins can create for any user.
+
+    match /notifications/{notificationId} {
+      allow read: if isSignedIn() && (
+        resource.data.userId == request.auth.uid ||
+        isAdmin()
+      );
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && (
+        resource.data.userId == request.auth.uid ||
+        isAdmin()
+      );
+      allow delete: if isSignedIn() && (
+        resource.data.userId == request.auth.uid ||
+        isAdmin()
+      );
+    }
+
+    // ─── Receipts ──────────────────────────────────────────────────────────────
+
+    match /receipts/{receiptId} {
+      allow read: if isSignedIn() && (
+        resource.data.customerId == request.auth.uid ||
+        isStaffOrAdmin()
+      );
+      allow create: if isSignedIn();
+      allow update: if isStaffOrAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ─── Settings ──────────────────────────────────────────────────────────────
+
+    match /settings/{settingId} {
+      allow read: if isSignedIn() && (
+        resource.data.userId == request.auth.uid ||
+        isAdmin()
+      );
+      allow write: if isSignedIn() && (
+        resource.data.userId == request.auth.uid ||
+        isAdmin()
+      );
+      allow create: if isSignedIn();
+    }
+
+    // ─── Audit Logs ────────────────────────────────────────────────────────────
+    // Readable by admins only; written by Cloud Functions or admins.
+
+    match /auditLogs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isStaffOrAdmin();
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}

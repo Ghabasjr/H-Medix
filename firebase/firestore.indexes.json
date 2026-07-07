@@ -1,0 +1,97 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "transactions",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "storeId", "order": "Ascending" },
+        { "fieldPath": "createdAt", "order": "Descending" }
+      ]
+    },
+    {
+      "collectionGroup": "transactions",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "storeId", "order": "Ascending" },
+        { "fieldPath": "status", "order": "Ascending" }
+      ]
+    },
+    {
+      "collectionGroup": "transactions",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "customerId", "order": "Ascending" },
+        { "fieldPath": "createdAt", "order": "Descending" }
+      ]
+    },
+    {
+      "collectionGroup": "payments",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "storeId", "order": "Ascending" },
+        { "fieldPath": "status", "order": "Ascending" }
+      ]
+    },
+    {
+      "collectionGroup": "payments",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "storeId", "order": "Ascending" },
+        { "fieldPath": "createdAt", "order": "Descending" }
+      ]
+    },
+    {
+      "collectionGroup": "qrPayments",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "storeId", "order": "Ascending" },
+        { "fieldPath": "status", "order": "Ascending" }
+      ]
+    },
+    {
+      "collectionGroup": "qrPayments",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "storeId", "order": "Ascending" },
+        { "fieldPath": "createdAt", "order": "Descending" }
+      ]
+    },
+    {
+      "collectionGroup": "auditLogs",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "storeId", "order": "Ascending" },
+        { "fieldPath": "createdAt", "order": "Descending" }
+      ]
+    },
+    {
+      "collectionGroup": "notifications",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "userId", "order": "Ascending" },
+        { "fieldPath": "read", "order": "Ascending" },
+        { "fieldPath": "createdAt", "order": "Descending" }
+      ]
+    },
+    {
+      "collectionGroup": "users",
+      "queryScope": "Collection",
+      "fields": [
+        { "fieldPath": "role", "order": "Ascending" },
+        { "fieldPath": "createdAt", "order": "Descending" }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "auditLogs",
+      "fieldPath": "status",
+      "indexes": [
+        {
+          "order": "Ascending",
+          "queryScope": "Collection"
+        }
+      ]
+    }
+  ]
+}
