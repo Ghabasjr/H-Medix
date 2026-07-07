@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ROUTES } from '@/lib/constants/app'
-import { useTheme } from '@/contexts/ThemeContext'
+// import { useTheme } from '@/contexts/ThemeContext'
 import { useState } from 'react'
 
 export function LandingNav() {
-  const { isDark, toggleTheme } = useTheme()
+  // const { isDark, toggleTheme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -41,7 +41,7 @@ export function LandingNav() {
           {/* Right side actions */}
           <div className="flex items-center gap-4">
             {/* Theme toggle */}
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="p-2 rounded-lg border border-border hover:bg-secondary transition"
               aria-label="Toggle theme"
