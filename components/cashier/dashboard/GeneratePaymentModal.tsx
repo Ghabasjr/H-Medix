@@ -32,6 +32,7 @@ export function GeneratePaymentModal({
   const [generating, setGenerating] = useState(false)
   const [qrCodeUrl, setQrCodeUrl] = useState<string | null>(null)
   const [paymentId, setPaymentId] = useState<string | null>(null)
+  const [paymentLink, setPaymentLink] = useState<string | null>(null)
 
   const handleGenerate = async () => {
     if (!amount || parseFloat(amount) <= 0) {
@@ -45,8 +46,8 @@ export function GeneratePaymentModal({
       // Generate payment ID (in real app, would come from backend)
       const id = `PAY-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
 
-      // Create QR data
-      const qrData = createPaymentQRData(id, parseFloat(amount), 'NGN')
+      // Create a normal web payment link so phone cameras open it directly.
+      const qrData = createPaymentQRData(id, window.location.origin)
 
       // Generate QR code
       const qrUrl = await generateQRCodeDataURL(qrData)
@@ -67,6 +68,7 @@ export function GeneratePaymentModal({
         metadata: {
           storeName,
           paymentId: id,
+          paymentLink: qrData,
         },
         createdAt: now,
         updatedAt: now,
@@ -74,6 +76,7 @@ export function GeneratePaymentModal({
       })
 
       setPaymentId(id)
+      setPaymentLink(qrData)
       setQrCodeUrl(qrUrl)
 
       addToast('QR code generated successfully', 'success')
@@ -86,11 +89,11 @@ export function GeneratePaymentModal({
   }
 
   const handleCopyToClipboard = async () => {
-    if (!qrCodeUrl) return
+    if (!paymentLink && !paymentId) return
 
     try {
-      await navigator.clipboard.writeText(paymentId || '')
-      addToast('Payment ID copied to clipboard', 'success')
+      await navigator.clipboard.writeText(paymentLink || paymentId || '')
+      addToast('Payment link copied to clipboard', 'success')
     } catch (error) {
       addToast('Failed to copy to clipboard', 'error')
     }
@@ -176,6 +179,10 @@ export function GeneratePaymentModal({
                 {/* Payment Details */}
                 <div className="space-y-3">
                   <div>
+                    <p className="text-sm text-muted-foreground">Scan Link</p>
+                    <p className="font-mono text-sm break-all">{paymentLink}</p>
+                  </div>
+                  <div>
                     <p className="text-sm text-muted-foreground">Payment ID</p>
                     <p className="font-mono text-sm break-all">{paymentId}</p>
                   </div>
@@ -195,7 +202,7 @@ export function GeneratePaymentModal({
                     className="gap-2"
                   >
                     <Copy className="h-4 w-4" />
-                    Copy ID
+                    Copy Link
                   </Button>
                   <Button onClick={handleDownload} className="gap-2">
                     <Download className="h-4 w-4" />
@@ -209,6 +216,7 @@ export function GeneratePaymentModal({
                   onClick={() => {
                     setQrCodeUrl(null)
                     setPaymentId(null)
+                    setPaymentLink(null)
                     setAmount('')
                   }}
                   className="w-full"

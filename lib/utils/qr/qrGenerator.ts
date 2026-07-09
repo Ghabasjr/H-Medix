@@ -33,9 +33,17 @@ export async function generateQRCodeCanvas(data: string, canvas: HTMLCanvasEleme
   }
 }
 
-export function createPaymentQRData(paymentId: string, amount: number, currency: string = 'NGN'): string {
-  // Format: qrpay://paymentId?amount=X&currency=Y
-  return `qrpay://${paymentId}?amount=${amount}&currency=${currency}`
+export function createPaymentQRData(paymentId: string, origin?: string): string {
+  const baseUrl =
+    origin ||
+    (typeof window !== 'undefined' && window.location.origin) ||
+    ''
+
+  if (!baseUrl) {
+    return `/pay/${encodeURIComponent(paymentId)}`
+  }
+
+  return `${baseUrl.replace(/\/$/, '')}/pay/${encodeURIComponent(paymentId)}`
 }
 
 export function downloadQRCode(dataURL: string, filename: string = 'payment-qr.png'): void {
