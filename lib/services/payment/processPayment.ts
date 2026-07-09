@@ -34,6 +34,16 @@ function toDate(value: unknown): Date | null {
   return null
 }
 
+function addIfDefined(
+  target: Record<string, unknown>,
+  key: string,
+  value: unknown
+) {
+  if (value !== undefined) {
+    target[key] = value
+  }
+}
+
 /**
  * Process a payment from a QR code with atomic transaction safety
  * Prevents duplicate payments and ensures data consistency
@@ -127,17 +137,20 @@ export async function processPayment(
         updatedAt: new Date(),
       })
     } else {
-      batch.set(customerRef, {
+      const customerData: Record<string, unknown> = {
         id: input.customerId,
-        email: input.customerEmail,
-        phone: input.customerPhone,
         totalSpent: input.amount,
         transactionCount: 1,
         status: 'active',
         lastTransactionAt: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
-      })
+      }
+
+      addIfDefined(customerData, 'email', input.customerEmail)
+      addIfDefined(customerData, 'phone', input.customerPhone)
+
+      batch.set(customerRef, customerData)
     }
 
     // Commit batch
