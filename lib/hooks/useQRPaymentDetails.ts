@@ -11,6 +11,20 @@ interface UseQRPaymentDetailsReturn {
   error: string | null
 }
 
+function toDate(value: unknown): Date | null {
+  if (!value) return null
+  if (value instanceof Date) return value
+  if (typeof value === 'object' && 'toDate' in value) {
+    const timestamp = value as { toDate?: () => Date }
+    if (typeof timestamp.toDate === 'function') return timestamp.toDate()
+  }
+  if (typeof value === 'string' || typeof value === 'number') {
+    const date = new Date(value)
+    return Number.isNaN(date.getTime()) ? null : date
+  }
+  return null
+}
+
 export function useQRPaymentDetails(qrId: string): UseQRPaymentDetailsReturn {
   const [qrPayment, setQRPayment] = useState<QRPayment | null>(null)
   const [loading, setLoading] = useState(true)
@@ -40,8 +54,14 @@ export function useQRPaymentDetails(qrId: string): UseQRPaymentDetailsReturn {
         const data = qrSnap.data()
 
         // Check if QR code is expired
-        const expiresAt = new Date(data.expiresAt)
-        if (expiresAt < new Date()) {
+        const validUntil = toDate(data.validUntil ?? data.expiresAt)
+        if (!validUntil) {
+          setError('This payment has an invalid expiry date')
+          setQRPayment(null)
+          return
+        }
+
+        if (validUntil < new Date()) {
           setError('This QR code has expired')
           setQRPayment(null)
           return

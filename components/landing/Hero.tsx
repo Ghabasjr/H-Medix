@@ -41,27 +41,27 @@ export function Hero() {
                 Get Started
               </Button>
             </Link>
-            <Button
+            {/* <Button
               size="lg"
               variant="outline"
               className="h-12 px-8 text-base rounded-full font-semibold"
             >
               Watch Demo
-            </Button>
+            </Button> */}
           </div>
 
           {/* Trust indicators */}
           <div className="flex items-center gap-8 pt-12 border-t border-border mt-12">
             <div className="text-center">
-              <p className="text-2xl font-bold text-foreground">10K+</p>
+              <p className="text-2xl font-bold text-foreground">1K+</p>
               <p className="text-sm text-muted-foreground">Active Users</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-foreground">$500M+</p>
+              <p className="text-2xl font-bold text-foreground">N50k+</p>
               <p className="text-sm text-muted-foreground">Transactions</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-foreground">99.9%</p>
+              <p className="text-2xl font-bold text-foreground">70%</p>
               <p className="text-sm text-muted-foreground">Uptime</p>
             </div>
           </div>

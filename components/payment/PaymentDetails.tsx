@@ -13,8 +13,17 @@ interface PaymentDetailsProps {
   onContinue: () => void
 }
 
+function toDate(value: unknown): Date {
+  if (value instanceof Date) return value
+  if (typeof value === 'object' && value && 'toDate' in value) {
+    const timestamp = value as { toDate?: () => Date }
+    if (typeof timestamp.toDate === 'function') return timestamp.toDate()
+  }
+  return new Date(value as string | number)
+}
+
 export function PaymentDetails({ qrPayment, onContinue }: PaymentDetailsProps) {
-  const expiresAt = new Date(qrPayment.expiresAt)
+  const expiresAt = toDate(qrPayment.validUntil)
   const isExpired = expiresAt < new Date()
   const timeRemaining = Math.max(0, expiresAt.getTime() - Date.now())
   const minutesRemaining = Math.floor(timeRemaining / 60000)
@@ -38,7 +47,7 @@ export function PaymentDetails({ qrPayment, onContinue }: PaymentDetailsProps) {
           <div className="space-y-2">
             <p className="text-sm font-medium text-muted-foreground">Amount</p>
             <p className="text-4xl font-bold text-accent">
-              {formatCurrency(qrPayment.amount, qrPayment.currency)}
+              {formatCurrency(qrPayment.amount)}
             </p>
           </div>
 

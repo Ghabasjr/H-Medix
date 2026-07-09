@@ -4,12 +4,14 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useTheme } from '@/contexts/ThemeContext'
 import { Button } from '@/components/ui/button'
 import { Menu, Moon, Sun } from 'lucide-react'
-import { useState } from 'react'
 
-export function Navbar() {
+interface NavbarProps {
+  onMenuClick?: () => void
+}
+
+export function Navbar({ onMenuClick }: NavbarProps) {
   const { user, logout } = useAuth()
   const { theme, setTheme } = useTheme()
-  const [menuOpen, setMenuOpen] = useState(false)
 
   if (!user) return null
 
@@ -24,7 +26,8 @@ export function Navbar() {
             variant="ghost"
             size="icon"
             className="md:hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={onMenuClick}
+            aria-label="Open navigation menu"
           >
             <Menu className="w-5 h-5" />
           </Button>

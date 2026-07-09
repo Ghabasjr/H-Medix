@@ -12,6 +12,7 @@ import {
   Settings,
   LogOut,
   Users,
+  X,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ROUTES } from '@/lib/constants/app'
@@ -37,7 +38,12 @@ const menuItems = {
   ],
 }
 
-export function Sidebar() {
+interface SidebarProps {
+  mobileOpen?: boolean
+  onMobileClose?: () => void
+}
+
+export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
   const { user, logout } = useAuth()
   const pathname = usePathname()
 
@@ -45,11 +51,22 @@ export function Sidebar() {
 
   const items = menuItems[user.role] || []
 
-  return (
-    <aside className="hidden md:flex flex-col w-64 border-r border-border bg-sidebar text-sidebar-foreground">
+  const navigation = (
+    <>
       {/* Header */}
       <div className="flex items-center justify-between h-16 px-4 border-b border-sidebar-border">
         <h1 className="text-lg font-bold text-sidebar-primary">QR Cashless</h1>
+        {onMobileClose && (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={onMobileClose}
+            aria-label="Close navigation menu"
+          >
+            <X className="w-5 h-5" />
+          </Button>
+        )}
       </div>
 
       {/* Navigation */}
@@ -59,7 +76,7 @@ export function Sidebar() {
           const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
 
           return (
-            <Link key={item.label} href={item.href}>
+            <Link key={item.label} href={item.href} onClick={onMobileClose}>
               <Button
                 variant={isActive ? 'default' : 'ghost'}
                 size="sm"
@@ -85,13 +102,38 @@ export function Sidebar() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={logout}
+          onClick={() => {
+            onMobileClose?.()
+            logout()
+          }}
           className="w-full justify-start gap-3 text-destructive hover:bg-destructive/10"
         >
           <LogOut className="w-4 h-4" />
           <span>Logout</span>
         </Button>
       </div>
-    </aside>
+    </>
+  )
+
+  return (
+    <>
+      <aside className="hidden md:flex flex-col w-64 border-r border-border bg-sidebar text-sidebar-foreground">
+        {navigation}
+      </aside>
+
+      {mobileOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/50"
+            onClick={onMobileClose}
+            aria-label="Close navigation menu"
+          />
+          <aside className="relative flex h-full w-72 max-w-[85vw] flex-col border-r border-border bg-sidebar text-sidebar-foreground shadow-xl">
+            {navigation}
+          </aside>
+        </div>
+      )}
+    </>
   )
 }

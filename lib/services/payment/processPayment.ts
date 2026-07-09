@@ -2,6 +2,7 @@ import { db } from '@/lib/firebase/config'
 import { doc, getDoc, setDoc, updateDoc, writeBatch, serverTimestamp, FieldValue } from 'firebase/firestore'
 import { QRPayment } from '@/lib/db/models/qrPayment.types'
 import { Transaction } from '@/lib/db/models/transaction.types'
+import { PaymentMethod } from '@/lib/db/types'
 
 interface ProcessPaymentInput {
   qrId: string
@@ -10,13 +11,27 @@ interface ProcessPaymentInput {
   customerPhone?: string
   amount: number
   currency: string
-  paymentMethod: string
+  paymentMethod: PaymentMethod
 }
 
 interface ProcessPaymentResponse {
   success: boolean
   transactionId?: string
   error?: string
+}
+
+function toDate(value: unknown): Date | null {
+  if (!value) return null
+  if (value instanceof Date) return value
+  if (typeof value === 'object' && 'toDate' in value) {
+    const timestamp = value as { toDate?: () => Date }
+    if (typeof timestamp.toDate === 'function') return timestamp.toDate()
+  }
+  if (typeof value === 'string' || typeof value === 'number') {
+    const date = new Date(value)
+    return Number.isNaN(date.getTime()) ? null : date
+  }
+  return null
 }
 
 /**
@@ -44,8 +59,12 @@ export async function processPayment(
       return { success: false, error: 'This payment has already been processed' }
     }
 
-    const expiresAt = new Date(qrData.expiresAt)
-    if (expiresAt < new Date()) {
+    const validUntil = toDate(qrData.validUntil ?? (qrData as QRPayment & { expiresAt?: unknown }).expiresAt)
+    if (!validUntil) {
+      return { success: false, error: 'This payment has an invalid expiry date' }
+    }
+
+    if (validUntil < new Date()) {
       return { success: false, error: 'This QR code has expired' }
     }
 
@@ -69,7 +88,6 @@ export async function processPayment(
 
     // Create transaction document
     const transaction: Omit<Transaction, 'id'> = {
-      qrPaymentId: qrId,
       customerId: input.customerId,
       storeId: qrData.storeId,
       cashierId: qrData.cashierId,
@@ -77,8 +95,11 @@ export async function processPayment(
       currency: input.currency,
       paymentMethod: input.paymentMethod,
       status: 'completed',
-      customerEmail: input.customerEmail,
-      customerPhone: input.customerPhone,
+      items: [],
+      discount: 0,
+      tax: 0,
+      total: input.amount,
+      paymentId: qrId,
       createdAt: new Date(),
       updatedAt: new Date(),
       createdBy: input.customerId,

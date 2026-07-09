@@ -9,6 +9,8 @@ import { X, Copy, Download } from 'lucide-react'
 import { generateQRCodeDataURL, createPaymentQRData, downloadQRCode } from '@/lib/utils/qr/qrGenerator'
 import { formatCurrency } from '@/lib/utils/admin'
 import { useToast } from '@/contexts/ToastContext'
+import { db } from '@/lib/firebase/config'
+import { doc, setDoc } from 'firebase/firestore'
 
 interface GeneratePaymentModalProps {
   isOpen: boolean
@@ -42,13 +44,36 @@ export function GeneratePaymentModal({
 
       // Generate payment ID (in real app, would come from backend)
       const id = `PAY-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
-      setPaymentId(id)
 
       // Create QR data
       const qrData = createPaymentQRData(id, parseFloat(amount), 'NGN')
 
       // Generate QR code
       const qrUrl = await generateQRCodeDataURL(qrData)
+
+      const now = new Date()
+      const validUntil = new Date(now.getTime() + 24 * 60 * 60 * 1000)
+
+      await setDoc(doc(db, 'qrPayments', id), {
+        id,
+        storeId,
+        cashierId,
+        qrCode: qrData,
+        qrImage: qrUrl,
+        amount: parseFloat(amount),
+        currency: 'NGN',
+        status: 'active',
+        validUntil,
+        metadata: {
+          storeName,
+          paymentId: id,
+        },
+        createdAt: now,
+        updatedAt: now,
+        createdBy: cashierId,
+      })
+
+      setPaymentId(id)
       setQrCodeUrl(qrUrl)
 
       addToast('QR code generated successfully', 'success')

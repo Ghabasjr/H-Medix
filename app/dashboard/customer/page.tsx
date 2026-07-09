@@ -18,9 +18,22 @@ export default function CustomerDashboard() {
     const trimmed = qrInput.trim()
     if (!trimmed) return
     // Extract QR ID — supports raw ID or a full URL like /pay/[qrId]
-    const match = trimmed.match(/pay\/([^?&/]+)/)
-    const qrId = match ? match[1] : trimmed
-    router.push(`/pay/${qrId}`)
+    let qrId = trimmed
+
+    try {
+      const parsed = new URL(trimmed)
+      if (parsed.protocol === 'qrpay:') {
+        qrId = parsed.hostname || parsed.pathname.replace(/^\/+/, '')
+      } else {
+        const match = parsed.pathname.match(/\/pay\/([^/?#]+)/)
+        qrId = match ? match[1] : trimmed
+      }
+    } catch {
+      const match = trimmed.match(/(?:^|\/)pay\/([^?&#/]+)/)
+      qrId = match ? match[1] : trimmed
+    }
+
+    router.push(`/pay/${encodeURIComponent(qrId)}`)
   }
 
   return (
