@@ -113,7 +113,7 @@ export function PaymentDetails({ qrPayment, onContinue }: PaymentDetailsProps) {
         <p className="text-sm text-muted-foreground">
           Your payment is secure and encrypted
         </p>
-        <Link href="/" className="text-sm text-accent hover:underline">
+        <Link href="/dashboard/customer" className="text-sm text-accent hover:underline">
           Back to Home
         </Link>
       </div>

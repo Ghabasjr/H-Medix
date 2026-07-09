@@ -111,7 +111,7 @@ export function PaymentSuccess({
 
       {/* Return Button */}
       <div className="pt-4">
-        <Link href="/" className="w-full">
+        <Link href="/dashboard/customer" className="w-full">
           <Button size="lg" className="w-full gap-2">
             <Home className="h-5 w-5" />
             Back to Home

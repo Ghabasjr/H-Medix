@@ -56,7 +56,7 @@ export function PaymentError({
             Try Again
           </Button>
         )}
-        <Link href="/" className="w-full block">
+        <Link href="/dashboard/customer" className="w-full block">
           <Button
             size="lg"
             className="w-full gap-2"
