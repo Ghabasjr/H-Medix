@@ -21,8 +21,8 @@ const menuItems = {
   admin: [
     { label: 'Dashboard', href: '/dashboard/admin', icon: LayoutDashboard },
     { label: 'Users', href: '/dashboard/admin/users', icon: Users },
-    { label: 'Customers', href: '/dashboard/admin/customers', icon: Users },
-    { label: 'Cashiers', href: '/dashboard/admin/cashiers', icon: Users },
+    // { label: 'Customers', href: '/dashboard/admin/customers', icon: Users },
+    // { label: 'Cashiers', href: '/dashboard/admin/cashiers', icon: Users },
     { label: 'Transactions', href: '/dashboard/admin/transactions', icon: Wallet },
     { label: 'Reports', href: '/dashboard/admin/reports', icon: BarChart3 },
     { label: 'Settings', href: '/dashboard/admin/settings', icon: Settings },
