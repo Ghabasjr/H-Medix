@@ -5,8 +5,28 @@ export function formatCurrency(amount: number): string {
   }).format(amount)
 }
 
-export function formatDate(date: Date | string | number): string {
-  const d = new Date(date)
+export function toDate(value: unknown): Date | null {
+  if (value instanceof Date) return value
+  if (value && typeof value === 'object') {
+    if (typeof (value as any).toDate === 'function') {
+      return (value as any).toDate()
+    }
+    if (
+      typeof (value as any).seconds === 'number' &&
+      typeof (value as any).nanoseconds === 'number'
+    ) {
+      return new Date((value as any).seconds * 1000 + (value as any).nanoseconds / 1_000_000)
+    }
+  }
+
+  const date = new Date(value as string | number)
+  return Number.isNaN(date.getTime()) ? null : date
+}
+
+export function formatDate(date: Date | string | number | Record<string, unknown> | null | undefined): string {
+  const d = toDate(date)
+  if (!d) return 'Invalid date'
+
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'short',
@@ -14,8 +34,12 @@ export function formatDate(date: Date | string | number): string {
   }).format(d)
 }
 
-export function formatDateTime(date: Date | string | number): string {
-  const d = new Date(date)
+export function formatDateTime(
+  date: Date | string | number | Record<string, unknown> | null | undefined,
+): string {
+  const d = toDate(date)
+  if (!d) return 'Invalid date'
+
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'short',

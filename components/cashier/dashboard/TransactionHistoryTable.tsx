@@ -121,7 +121,7 @@ export function TransactionHistoryTable({
                     </Badge>
                   </td>
                   <td className="px-4 py-3 text-muted-foreground">
-                    {formatDateTime(new Date(transaction.createdAt))}
+                    {formatDateTime(transaction.createdAt)}
                   </td>
                   <td className="px-4 py-3 text-right">
                     <Button

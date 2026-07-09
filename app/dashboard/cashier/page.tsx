@@ -11,6 +11,7 @@ import { TransactionHistoryTable } from '@/components/cashier/dashboard/Transact
 import { QrCode } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useTransactions } from '@/lib/hooks/useTransactions'
+import { toDate } from '@/lib/utils/admin'
 import { printReceipt, downloadReceiptAsText } from '@/lib/utils/receipt/receiptFormatter'
 import { useToast } from '@/contexts/ToastContext'
 
@@ -25,7 +26,8 @@ export default function CashierDashboard() {
   today.setHours(0, 0, 0, 0)
 
   const todaysTransactions = transactions.filter((t: any) => {
-    const txDate = new Date(t.createdAt)
+    const txDate = toDate(t.createdAt)
+    if (!txDate) return false
     txDate.setHours(0, 0, 0, 0)
     return txDate.getTime() === today.getTime()
   })
