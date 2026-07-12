@@ -7,6 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { QrCode, Wallet, History, X, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useAuth } from '@/contexts/AuthContext'
+import { customerService } from '@/lib/db/services/customerService'
+import { Customer } from '@/lib/db/models/customer.types'
+import { formatCurrency } from '@/lib/utils/admin'
 
 type DetectedBarcode = { rawValue: string }
 type BarcodeDetectorConstructor = new (options?: { formats?: string[] }) => {
@@ -15,12 +19,38 @@ type BarcodeDetectorConstructor = new (options?: { formats?: string[] }) => {
 
 export default function CustomerDashboard() {
   const router = useRouter()
+  const { user } = useAuth()
   const [showScanner, setShowScanner] = useState(false)
   const [qrInput, setQrInput] = useState('')
   const [scannerError, setScannerError] = useState('')
   const [scanning, setScanning] = useState(false)
+  const [customer, setCustomer] = useState<Customer | null>(null)
+  const [loading, setLoading] = useState(true)
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
+
+  // Fetch customer data on mount or when user changes
+  useEffect(() => {
+    const fetchCustomerData = async () => {
+      if (!user?.uid) {
+        setLoading(false)
+        return
+      }
+
+      try {
+        const response = await customerService.getCustomerByUid(user.uid)
+        if (response.success && response.data) {
+          setCustomer(response.data)
+        }
+      } catch (error) {
+        console.error('Error fetching customer data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchCustomerData()
+  }, [user?.uid])
 
   const stopScanner = () => {
     streamRef.current?.getTracks().forEach((track) => track.stop())
@@ -203,8 +233,10 @@ export default function CustomerDashboard() {
               <Wallet className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">NGN 0.00</div>
-              <p className="text-xs text-muted-foreground">Coming in Phase 2</p>
+              <div className="text-2xl font-bold">
+                {loading ? '...' : `₦${(customer?.walletBalance || 0).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+              </div>
+              <p className="text-xs text-muted-foreground">Wallet funds available</p>
             </CardContent>
           </Card>
 
@@ -214,8 +246,10 @@ export default function CustomerDashboard() {
               <QrCode className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">NGN 0.00</div>
-              <p className="text-xs text-muted-foreground">Coming in Phase 2</p>
+              <div className="text-2xl font-bold">
+                {loading ? '...' : `₦${(customer?.totalSpent || 0).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+              </div>
+              <p className="text-xs text-muted-foreground">Lifetime spending</p>
             </CardContent>
           </Card>
 
@@ -225,8 +259,8 @@ export default function CustomerDashboard() {
               <History className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">0</div>
-              <p className="text-xs text-muted-foreground">Coming in Phase 2</p>
+              <div className="text-2xl font-bold">{loading ? '...' : customer?.transactionCount || 0}</div>
+              <p className="text-xs text-muted-foreground">Total transactions</p>
             </CardContent>
           </Card>
         </div>

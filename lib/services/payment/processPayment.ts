@@ -91,6 +91,19 @@ export async function processPayment(
       }
     }
 
+    // Check customer wallet balance
+    const customerRef = doc(db, 'customers', input.customerId)
+    const customerSnap = await getDoc(customerRef)
+
+    const currentBalance = customerSnap.exists() ? (customerSnap.data().walletBalance || 0) : 0
+
+    if (currentBalance < input.amount) {
+      return {
+        success: false,
+        error: `Insufficient funds. Wallet balance: ₦${currentBalance.toLocaleString()}, Required: ₦${input.amount.toLocaleString()}`
+      }
+    }
+
     // Create transaction using batch to ensure atomicity
     const batch = writeBatch(db)
     const transactionId = `${qrId}_${input.customerId}_${Date.now()}`
@@ -125,12 +138,11 @@ export async function processPayment(
       updatedAt: new Date(),
     })
 
-    // Update or create customer document
-    const customerRef = doc(db, 'customers', input.customerId)
-    const customerSnap = await getDoc(customerRef)
-
+    // Update or create customer document with wallet deduction
     if (customerSnap.exists()) {
+      const newWalletBalance = (customerSnap.data().walletBalance || 0) - input.amount
       batch.update(customerRef, {
+        walletBalance: newWalletBalance,
         totalSpent: (customerSnap.data().totalSpent || 0) + input.amount,
         transactionCount: (customerSnap.data().transactionCount || 0) + 1,
         lastTransactionAt: new Date(),
@@ -139,6 +151,7 @@ export async function processPayment(
     } else {
       const customerData: Record<string, unknown> = {
         id: input.customerId,
+        walletBalance: 0 - input.amount,
         totalSpent: input.amount,
         transactionCount: 1,
         status: 'active',

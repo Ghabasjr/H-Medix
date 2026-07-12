@@ -45,6 +45,7 @@ class CustomerService {
       country: input.country,
       totalSpent: 0,
       transactionCount: 0,
+      walletBalance: input.walletBalance || 0,
       createdAt: new Date(),
       updatedAt: new Date(),
     }
@@ -71,6 +72,58 @@ class CustomerService {
   async deleteCustomer(id: string): Promise<ServiceResponse<void>> {
     return this.service.softDelete(id)
   }
-}
 
-export const customerService = new CustomerService()
+  async topUpWallet(customerId: string, amount: number): Promise<ServiceResponse<void>> {
+    const customer = await this.getCustomerById(customerId)
+    if (!customer.success || !customer.data) {
+      return { success: false, error: 'Customer not found' }
+    }
+
+    const newBalance = (customer.data.walletBalance || 0) + amount
+    return this.service.update<Customer>(customerId, {
+      walletBalance: newBalance,
+    })
+  }
+
+  async deductFromWallet(customerId: string, amount: number): Promise<ServiceResponse<{ success: boolean; newBalance?: number; error?: string }>> {
+    const customer = await this.getCustomerById(customerId)
+    if (!customer.success || !customer.data) {
+      return { success: false, data: { success: false, error: 'Customer not found' } }
+    }
+
+    const currentBalance = customer.data.walletBalance || 0
+
+    if (currentBalance < amount) {
+      return {
+        success: true,
+        data: {
+          success: false,
+          error: `Insufficient funds. Wallet balance: ₦${currentBalance}, Required: ₦${amount}`
+        }
+      }
+    }
+
+    const newBalance = currentBalance - amount
+    const updateResult = await this.service.update<Customer>(customerId, {
+      walletBalance: newBalance,
+      totalSpent: customer.data.totalSpent + amount,
+      transactionCount: customer.data.transactionCount + 1,
+    })
+
+    if (updateResult.success) {
+      return { success: true, data: { success: true, newBalance } }
+    }
+
+    return { success: false, data: { success: false, error: 'Failed to deduct from wallet' } }
+  }
+
+  async getWalletBalance(customerId: string): Promise<ServiceResponse<number>> {
+    const customer = await this.getCustomerById(customerId)
+    if (!customer.success || !customer.data) {
+      return { success: false, error: 'Customer not found' }
+    }
+
+    return { success: true, data: customer.data.walletBalance || 0 }
+  }
+
+  export const customerService = new CustomerService()

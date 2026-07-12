@@ -10,6 +10,7 @@ export interface Customer extends BaseDocument {
   country?: string
   totalSpent: number
   transactionCount: number
+  walletBalance: number
 }
 
 export interface CreateCustomerInput {
@@ -20,6 +21,7 @@ export interface CreateCustomerInput {
   state?: string
   zipCode?: string
   country?: string
+  walletBalance?: number
 }
 
 export interface UpdateCustomerInput {
@@ -29,4 +31,5 @@ export interface UpdateCustomerInput {
   state?: string
   zipCode?: string
   country?: string
+  walletBalance?: number
 }
