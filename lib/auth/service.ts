@@ -155,6 +155,37 @@ import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore'
 import { auth, db } from '../firebase/config'
 import { User, UserRole } from './types'
 
+async function ensureCustomerProfile(user: User): Promise<void> {
+  if (user.role !== 'customer') return
+
+  const customerRef = doc(db, 'customers', user.uid)
+  const customerSnap = await getDoc(customerRef)
+  const now = new Date()
+
+  if (customerSnap.exists()) {
+    await updateDoc(customerRef, {
+      name: user.name || user.displayName || '',
+      email: user.email,
+      updatedAt: now,
+    })
+    return
+  }
+
+  await setDoc(customerRef, {
+    id: user.uid,
+    uid: user.uid,
+    name: user.name || user.displayName || '',
+    email: user.email,
+    phone: '',
+    walletBalance: 0,
+    totalSpent: 0,
+    transactionCount: 0,
+    status: 'active',
+    createdAt: now,
+    updatedAt: now,
+  })
+}
+
 // Convert Firebase User to our User type
 async function convertFirebaseUser(firebaseUser: FirebaseUser, role?: UserRole): Promise<User> {
   // Try to get existing user document for role — tolerate the doc not
@@ -213,6 +244,7 @@ export async function signUpWithEmail(
   }
 
   await setDoc(doc(db, 'users', firebaseUser.uid), userData)
+  await ensureCustomerProfile(userData)
 
   return userData
 }
@@ -221,6 +253,7 @@ export async function signUpWithEmail(
 export async function loginWithEmail(email: string, password: string): Promise<User> {
   const userCredential = await signInWithEmailAndPassword(auth, email, password)
   const user = await convertFirebaseUser(userCredential.user)
+  await ensureCustomerProfile(user)
   return user
 }
 
@@ -251,10 +284,13 @@ export async function loginWithGoogle(idToken: string, role: UserRole): Promise<
       emailVerified: firebaseUser.emailVerified,
     }
     await setDoc(userDocRef, userData)
+    await ensureCustomerProfile(userData)
     return userData
   }
 
-  return convertFirebaseUser(firebaseUser)
+  const user = await convertFirebaseUser(firebaseUser)
+  await ensureCustomerProfile(user)
+  return user
 }
 
 // Logout

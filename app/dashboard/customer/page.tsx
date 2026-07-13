@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { QrCode, Wallet, History, X, ArrowRight } from 'lucide-react'
+import { QrCode, Wallet, History, X, ArrowRight, Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/contexts/AuthContext'
 import { customerService } from '@/lib/db/services/customerService'
 import { Customer } from '@/lib/db/models/customer.types'
 import { formatCurrency } from '@/lib/utils/admin'
+import { useToast } from '@/contexts/ToastContext'
 
 type DetectedBarcode = { rawValue: string }
 type BarcodeDetectorConstructor = new (options?: { formats?: string[] }) => {
@@ -20,12 +21,16 @@ type BarcodeDetectorConstructor = new (options?: { formats?: string[] }) => {
 export default function CustomerDashboard() {
   const router = useRouter()
   const { user } = useAuth()
+  const { addToast } = useToast()
   const [showScanner, setShowScanner] = useState(false)
   const [qrInput, setQrInput] = useState('')
   const [scannerError, setScannerError] = useState('')
   const [scanning, setScanning] = useState(false)
   const [customer, setCustomer] = useState<Customer | null>(null)
   const [loading, setLoading] = useState(true)
+  const [isTopingUp, setIsTopingUp] = useState(false)
+  const [showTopUpModal, setShowTopUpModal] = useState(false)
+  const [topUpAmount, setTopUpAmount] = useState('')
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
 
@@ -41,16 +46,31 @@ export default function CustomerDashboard() {
         const response = await customerService.getCustomerByUid(user.uid)
         if (response.success && response.data) {
           setCustomer(response.data)
+          return
+        }
+
+        const createResponse = await customerService.createCustomer({
+          uid: user.uid,
+          name: user.name || user.displayName || '',
+          email: user.email,
+          walletBalance: 0,
+        })
+
+        if (createResponse.success && createResponse.data) {
+          setCustomer(createResponse.data)
+        } else {
+          addToast(createResponse.error || 'Could not create customer wallet profile', 'error')
         }
       } catch (error) {
         console.error('Error fetching customer data:', error)
+        addToast('Error loading customer wallet profile', 'error')
       } finally {
         setLoading(false)
       }
     }
 
     fetchCustomerData()
-  }, [user?.uid])
+  }, [addToast, user?.displayName, user?.email, user?.name, user?.uid])
 
   const stopScanner = () => {
     streamRef.current?.getTracks().forEach((track) => track.stop())
@@ -163,6 +183,50 @@ export default function CustomerDashboard() {
     setScannerError('')
   }
 
+  const closeTopUpModal = () => {
+    if (isTopingUp) return
+    setShowTopUpModal(false)
+    setTopUpAmount('')
+  }
+
+  const handleTopUpSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!customer?.id) {
+      addToast('Customer wallet profile not found', 'error')
+      return
+    }
+
+    const amount = Number(topUpAmount)
+    if (!Number.isFinite(amount) || amount <= 0) {
+      addToast('Please enter a valid top-up amount', 'error')
+      return
+    }
+
+    setIsTopingUp(true)
+    try {
+      const response = await customerService.topUpWallet(customer.id, amount)
+
+      if (!response.success) {
+        addToast(response.error || 'Failed to top up wallet', 'error')
+        return
+      }
+
+      setCustomer((current) => current
+        ? { ...current, walletBalance: (current.walletBalance || 0) + amount }
+        : current
+      )
+      addToast(`${formatCurrency(amount)} added to your wallet`, 'success')
+      setShowTopUpModal(false)
+      setTopUpAmount('')
+    } catch (error) {
+      console.error('Customer top-up error:', error)
+      addToast('Error adding funds to wallet', 'error')
+    } finally {
+      setIsTopingUp(false)
+    }
+  }
+
   return (
     <ProtectedRoute requiredRoles={['customer']}>
       <div className="p-6 space-y-6">
@@ -226,17 +290,89 @@ export default function CustomerDashboard() {
           </div>
         )}
 
+        {showTopUpModal && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <Card className="w-full max-w-sm">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0">
+                <CardTitle className="flex items-center gap-2">
+                  <Wallet className="h-5 w-5" />
+                  Top Up Wallet
+                </CardTitle>
+                <button
+                  onClick={closeTopUpModal}
+                  className="p-1 rounded hover:bg-muted"
+                  disabled={isTopingUp}
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleTopUpSubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <label htmlFor="topUpAmount" className="text-sm font-medium">
+                      Amount
+                    </label>
+                    <Input
+                      id="topUpAmount"
+                      type="number"
+                      min="1"
+                      step="1"
+                      placeholder="Enter amount in NGN"
+                      value={topUpAmount}
+                      onChange={(e) => setTopUpAmount(e.target.value)}
+                      disabled={isTopingUp}
+                      autoFocus
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Current balance: {formatCurrency(customer?.walletBalance || 0)}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={closeTopUpModal}
+                      disabled={isTopingUp}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      type="submit"
+                      disabled={isTopingUp || !topUpAmount.trim()}
+                      className="gap-2"
+                    >
+                      <Plus className="h-4 w-4" />
+                      {isTopingUp ? 'Adding...' : 'Add Funds'}
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Available Balance</CardTitle>
+              <CardTitle className="text-sm font-medium">Wallet Balance</CardTitle>
               <Wallet className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {loading ? '...' : `₦${(customer?.walletBalance || 0).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                {loading ? '...' : formatCurrency(customer?.walletBalance || 0)}
               </div>
-              <p className="text-xs text-muted-foreground">Wallet funds available</p>
+              <div className="mt-3 flex items-center justify-between gap-3">
+                <p className="text-xs text-muted-foreground">Wallet funds available</p>
+                <Button
+                  size="sm"
+                  onClick={() => setShowTopUpModal(true)}
+                  disabled={loading || isTopingUp || !customer}
+                  className="gap-2"
+                >
+                  <Plus className="h-4 w-4" />
+                  Top Up
+                </Button>
+              </div>
             </CardContent>
           </Card>
 
@@ -247,7 +383,7 @@ export default function CustomerDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {loading ? '...' : `₦${(customer?.totalSpent || 0).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                {loading ? '...' : formatCurrency(customer?.totalSpent || 0)}
               </div>
               <p className="text-xs text-muted-foreground">Lifetime spending</p>
             </CardContent>

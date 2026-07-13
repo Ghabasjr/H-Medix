@@ -1,5 +1,5 @@
 import { db } from '@/lib/firebase/config'
-import { doc, getDoc, setDoc, updateDoc, writeBatch, serverTimestamp, FieldValue } from 'firebase/firestore'
+import { doc, getDoc, setDoc, writeBatch } from 'firebase/firestore'
 import { QRPayment } from '@/lib/db/models/qrPayment.types'
 import { Transaction } from '@/lib/db/models/transaction.types'
 import { PaymentMethod } from '@/lib/db/types'
@@ -32,16 +32,6 @@ function toDate(value: unknown): Date | null {
     return Number.isNaN(date.getTime()) ? null : date
   }
   return null
-}
-
-function addIfDefined(
-  target: Record<string, unknown>,
-  key: string,
-  value: unknown
-) {
-  if (value !== undefined) {
-    target[key] = value
-  }
 }
 
 /**
@@ -95,12 +85,23 @@ export async function processPayment(
     const customerRef = doc(db, 'customers', input.customerId)
     const customerSnap = await getDoc(customerRef)
 
-    const currentBalance = customerSnap.exists() ? (customerSnap.data().walletBalance || 0) : 0
+    if (!customerSnap.exists()) {
+      return {
+        success: false,
+        error: 'Customer wallet profile not found. Please top up the customer wallet before payment.'
+      }
+    }
+
+    const currentBalance = customerSnap.data().walletBalance || 0
+    const currencyFormatter = new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: input.currency || 'NGN',
+    })
 
     if (currentBalance < input.amount) {
       return {
         success: false,
-        error: `Insufficient funds. Wallet balance: ₦${currentBalance.toLocaleString()}, Required: ₦${input.amount.toLocaleString()}`
+        error: `Insufficient funds. Wallet balance: ${currencyFormatter.format(currentBalance)}, Required: ${currencyFormatter.format(input.amount)}`
       }
     }
 
@@ -138,33 +139,14 @@ export async function processPayment(
       updatedAt: new Date(),
     })
 
-    // Update or create customer document with wallet deduction
-    if (customerSnap.exists()) {
-      const newWalletBalance = (customerSnap.data().walletBalance || 0) - input.amount
-      batch.update(customerRef, {
-        walletBalance: newWalletBalance,
-        totalSpent: (customerSnap.data().totalSpent || 0) + input.amount,
-        transactionCount: (customerSnap.data().transactionCount || 0) + 1,
-        lastTransactionAt: new Date(),
-        updatedAt: new Date(),
-      })
-    } else {
-      const customerData: Record<string, unknown> = {
-        id: input.customerId,
-        walletBalance: 0 - input.amount,
-        totalSpent: input.amount,
-        transactionCount: 1,
-        status: 'active',
-        lastTransactionAt: new Date(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-
-      addIfDefined(customerData, 'email', input.customerEmail)
-      addIfDefined(customerData, 'phone', input.customerPhone)
-
-      batch.set(customerRef, customerData)
-    }
+    const newWalletBalance = currentBalance - input.amount
+    batch.update(customerRef, {
+      walletBalance: newWalletBalance,
+      totalSpent: (customerSnap.data().totalSpent || 0) + input.amount,
+      transactionCount: (customerSnap.data().transactionCount || 0) + 1,
+      lastTransactionAt: new Date(),
+      updatedAt: new Date(),
+    })
 
     // Commit batch
     await batch.commit()

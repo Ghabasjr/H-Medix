@@ -66,7 +66,7 @@ export function PaymentConfirmation({
           {/* Error Alert */}
           {error && (
             <div className="p-4 bg-destructive/10 border border-destructive rounded-lg flex gap-3">
-              <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+              <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
               <div className="space-y-1">
                 <p className="font-semibold text-destructive">Payment Error</p>
                 <p className="text-sm">{error}</p>

@@ -8,11 +8,14 @@ import { Spinner } from '@/components/ui/spinner'
 import { useQRPaymentDetails } from '@/lib/hooks/useQRPaymentDetails'
 import { processPayment } from '@/lib/services/payment/processPayment'
 import { useToast } from '@/contexts/ToastContext'
+import { useAuth } from '@/contexts/AuthContext'
+import { customerService } from '@/lib/db/services/customerService'
 
 export default function PaymentConfirmPage() {
   const params = useParams()
   const router = useRouter()
   const { addToast } = useToast()
+  const { user } = useAuth()
   const qrId = params.qrId as string
 
   const { qrPayment, loading, error: fetchError } = useQRPaymentDetails(qrId)
@@ -45,11 +48,25 @@ export default function PaymentConfirmPage() {
 
       await new Promise((resolve) => setTimeout(resolve, 2000 + Math.random() * 1000))
 
-      const customerId = `customer_${Date.now()}`
+      if (!user?.uid) {
+        const message = 'Please log in as a customer before making this payment.'
+        setError(message)
+        addToast(message, 'error')
+        return
+      }
+
+      const customerResponse = await customerService.getCustomerByUid(user.uid)
+      if (!customerResponse.success || !customerResponse.data) {
+        const message = 'Customer wallet profile not found. Ask an admin to create or top up your wallet.'
+        setError(message)
+        addToast(message, 'error')
+        return
+      }
 
       const result = await processPayment({
         qrId,
-        customerId,
+        customerId: customerResponse.data.id,
+        customerEmail: user.email,
         amount: qrPayment.amount,
         currency: qrPayment.currency,
         paymentMethod: 'qr_code',

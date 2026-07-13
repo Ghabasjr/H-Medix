@@ -34,9 +34,10 @@ class CustomerService {
   }
 
   async createCustomer(input: CreateCustomerInput): Promise<ServiceResponse<Customer & { id: string }>> {
-    const customerData: Customer = {
-      id: '',
+    const customerData = {
       uid: input.uid,
+      name: input.name,
+      email: input.email,
       phone: input.phone,
       address: input.address,
       city: input.city,
@@ -46,9 +47,10 @@ class CustomerService {
       totalSpent: 0,
       transactionCount: 0,
       walletBalance: input.walletBalance || 0,
+      status: 'active',
       createdAt: new Date(),
       updatedAt: new Date(),
-    }
+    } as Customer
 
     return this.service.create<Customer>(customerData)
   }
@@ -94,11 +96,16 @@ class CustomerService {
     const currentBalance = customer.data.walletBalance || 0
 
     if (currentBalance < amount) {
+      const currencyFormatter = new Intl.NumberFormat('en-NG', {
+        style: 'currency',
+        currency: 'NGN',
+      })
+
       return {
         success: true,
         data: {
           success: false,
-          error: `Insufficient funds. Wallet balance: ₦${currentBalance}, Required: ₦${amount}`
+          error: `Insufficient funds. Wallet balance: ${currencyFormatter.format(currentBalance)}, Required: ${currencyFormatter.format(amount)}`
         }
       }
     }
@@ -125,5 +132,6 @@ class CustomerService {
 
     return { success: true, data: customer.data.walletBalance || 0 }
   }
+}
 
-  export const customerService = new CustomerService()
+export const customerService = new CustomerService()

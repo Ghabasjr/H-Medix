@@ -21,6 +21,12 @@ import {
 import { db } from '@/lib/firebase/config'
 import { ServiceResponse, FilterOptions, QueryOptions } from '../types'
 
+function removeUndefinedFields<T extends Record<string, unknown>>(data: T): Partial<T> {
+  return Object.fromEntries(
+    Object.entries(data).filter(([, value]) => value !== undefined)
+  ) as Partial<T>
+}
+
 export class FirestoreService {
   private collectionName: string
 
@@ -42,7 +48,7 @@ export class FirestoreService {
 
       return {
         success: true,
-        data: { id: docSnap.id, ...docSnap.data() } as T,
+        data: { ...docSnap.data(), id: docSnap.id } as unknown as T,
       }
     } catch (error) {
       console.error(`Error getting document from ${this.collectionName}:`, error)
@@ -81,9 +87,9 @@ export class FirestoreService {
       const querySnapshot = await getDocs(q)
 
       const documents: T[] = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
         ...doc.data(),
-      })) as T[]
+        id: doc.id,
+      })) as unknown as T[]
 
       return { success: true, data: documents }
     } catch (error) {
@@ -99,7 +105,7 @@ export class FirestoreService {
     try {
       const now = new Date()
       const docData = {
-        ...data,
+        ...removeUndefinedFields(data),
         createdAt: now,
         updatedAt: now,
       }
@@ -108,7 +114,7 @@ export class FirestoreService {
 
       return {
         success: true,
-        data: { id: docRef.id, ...docData } as T & { id: string },
+        data: { ...docData, id: docRef.id } as unknown as T & { id: string },
       }
     } catch (error) {
       console.error(`Error creating document in ${this.collectionName}:`, error)
@@ -123,7 +129,7 @@ export class FirestoreService {
     try {
       const docRef = doc(db, this.collectionName, id)
       const updateData = {
-        ...data,
+        ...removeUndefinedFields(data),
         updatedAt: new Date(),
       }
 

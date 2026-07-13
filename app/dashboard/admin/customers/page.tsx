@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useFirestore } from '@/lib/hooks/useFirestore'
 import { customerService } from '@/lib/db/services/customerService'
 import { formatCurrency, formatDate } from '@/lib/utils/admin'
@@ -37,7 +37,7 @@ export default function CustomersPage() {
   const [isTopingUp, setIsTopingUp] = useState(false)
   const { addToast } = useToast()
 
-  const { data: customers, loading, refetch } = useFirestore('customers', [])
+  const { data: customers, loading } = useFirestore('customers', [])
 
   const filteredCustomers = useMemo(() => {
     return (customers || []).filter((customer: any) =>
@@ -63,10 +63,9 @@ export default function CustomersPage() {
     try {
       const response = await customerService.topUpWallet(customerId, amount)
       if (response.success) {
-        addToast(`₦${amount.toLocaleString()} added to customer wallet`, 'success')
+        addToast(`${formatCurrency(amount)} added to customer wallet`, 'success')
         setTopUpAmount('')
-        setSelectedCustomer(null)
-        refetch?.()
+        // Modal stays open, data updates from real-time listener
       } else {
         addToast(response.error || 'Failed to add funds', 'error')
       }
@@ -81,6 +80,16 @@ export default function CustomersPage() {
   const quickTopUp = async (customerId: string) => {
     await handleTopUp(customerId, 50000)
   }
+
+  // Sync selectedCustomer with updated customers data
+  useEffect(() => {
+    if (selectedCustomer && customers.length > 0) {
+      const updated = customers.find((c: any) => c.id === selectedCustomer.id)
+      if (updated) {
+        setSelectedCustomer(updated as Customer)
+      }
+    }
+  }, [customers])
 
   return (
     <ProtectedRoute requiredRoles={['admin']}>
@@ -106,7 +115,7 @@ export default function CustomersPage() {
                 render: (value) => (
                   <div className="flex items-center gap-2">
                     <Wallet className="h-4 w-4 text-green-600" />
-                    <span className="font-semibold">₦{(value || 0).toLocaleString('en-NG', { minimumFractionDigits: 2 })}</span>
+                    <span className="font-semibold">{formatCurrency(value || 0)}</span>
                   </div>
                 ),
               },
@@ -200,7 +209,7 @@ export default function CustomersPage() {
                     <p className="text-sm text-muted-foreground">Current Wallet Balance</p>
                   </div>
                   <p className="text-3xl font-bold text-green-600">
-                    ₦{(selectedCustomer.walletBalance || 0).toLocaleString('en-NG', { minimumFractionDigits: 2 })}
+                    {formatCurrency(selectedCustomer.walletBalance || 0)}
                   </p>
                 </div>
 
@@ -211,7 +220,7 @@ export default function CustomersPage() {
                     <div className="flex gap-2 mt-2">
                       <Input
                         type="number"
-                        placeholder="Enter amount (₦)"
+                        placeholder="Enter amount (NGN)"
                         value={topUpAmount}
                         onChange={(e) => setTopUpAmount(e.target.value)}
                         min="0"
@@ -287,7 +296,7 @@ export default function CustomersPage() {
                 <div className="border-t pt-4 grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-xs text-muted-foreground">Total Spent</p>
-                    <p className="font-semibold">₦{(selectedCustomer.totalSpent || 0).toLocaleString('en-NG', { minimumFractionDigits: 2 })}</p>
+                    <p className="font-semibold">{formatCurrency(selectedCustomer.totalSpent || 0)}</p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Transactions</p>
